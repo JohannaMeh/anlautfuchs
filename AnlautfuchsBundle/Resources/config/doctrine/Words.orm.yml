@@ -1,0 +1,46 @@
+AnlautfuchsBundle\Entity\Words:
+    type: entity
+    table: words
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        word:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        image:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        sound:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        solution:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            comment: ''
+    manyToMany:
+        level:
+            targetEntity: Levels
+            cascade: {  }
+            mappedBy: word
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,86 @@
+AnlautfuchsBundle\Entity\Levels:
+    type: entity
+    repositoryClass: AnlautfuchsBundle\Entity\LevelRepository
+    table: levels
+    indexes:
+        parent_level_id:
+            columns:
+                - parent_level_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            comment: ''
+        image:
+            type: boolean
+            nullable: false
+            comment: ''
+        secondRow:
+            type: boolean
+            nullable: false
+            comment: ''
+            column: second_row
+        nextLevel:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: next_level_id
+        explanationSound:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: explanation_sound
+        sorting:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        cssClass:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+            column: css_class
+    manyToOne:
+        parentLevel:
+            targetEntity: Levels
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                parent_level_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        word:
+            targetEntity: Words
+            cascade: {  }
+            mappedBy: null
+            inversedBy: level
+            joinTable:
+                name: words_for_level
+                joinColumns:
+                    -
+                        name: level_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: word_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

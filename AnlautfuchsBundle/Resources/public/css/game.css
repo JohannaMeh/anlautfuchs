@@ -1,0 +1,1093 @@
+@charset "utf-8";
+
+/*different fonts*/
+@font-face {
+    font-family: 'LetsTracebasic';
+    src: url(../fonts/LetsTracebasic.ttf);
+}
+@font-face {
+    font-family: 'DidactGothic';
+    src: url(../fonts/DidactGothic.ttf);
+}
+@font-face {
+    font-family: 'FibelNord';
+    src: url(../fonts/FibelNord.ttf);
+}
+@font-face {
+    font-family: 'FibelSued';
+    src: url(../fonts/FibelSued.ttf);
+}
+@font-face {
+    font-family: 'FibelSuedBold';
+    src: url(../fonts/FibelSuedBold.ttf);
+}
+@font-face {
+    font-family: 'AAASchule';
+    src: url(../fonts/AAASchule.ttf);
+}
+
+/*for everybody*/
+html, body{
+    height:100%;
+    width:100%;
+    font-family: 'AAASchule';
+    color:white;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#game-body{
+    height:90%;
+    width:100%;
+}
+
+#header{
+    background: linear-gradient(to bottom, rgba(0,119,8, 0.4), rgba(0,50,5, 0.2)); /*green*/
+    height:10%;
+    text-align:center;
+    font-size: 50px;
+}
+
+#img-background{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-5000;
+}
+
+
+.tape-recorder {
+    background: url("../data/img/animation/kassettenrekorderKlein.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    z-index: 3;
+    bottom: 0;
+    margin: auto;
+}
+
+.companion {
+    background: url("../data/img/animation/fuchsKlein.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 350px;
+    width: 350px;
+    position: fixed;
+    z-index: 3;
+    bottom: 0;
+    margin: auto;
+}
+
+/* select-button */
+.select-button {
+    background: url("../data/img/UI/ok.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 100px;
+    text-align: center;
+    width: 100px;
+    border: none;
+    margin: 0 auto;
+}
+
+.select-button:hover{
+    background: url("../data/img/UI/ok.png") no-repeat scroll -100px 0 rgba(0, 0, 0, 0);
+}
+
+/* back button */
+#back-button {
+    background: url("../data/img/UI/ui_elements_1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 70px;
+    width: 70px;
+    margin: auto;
+}
+
+#back-button:hover{
+    background: url("../data/img/UI/ui_elements_1.png") no-repeat scroll -70px 0 rgba(0, 0, 0, 0);
+}
+
+/* logout button */
+#logout-button {
+    background: url("../data/img/UI/ui_elements_1.png") no-repeat scroll 0 -70px rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 70px;
+    width: 70px;
+    margin: auto;
+}
+
+#logout-button:hover {
+    background: url("../data/img/UI/ui_elements_1.png") no-repeat scroll -70px -70px rgba(0, 0, 0, 0);
+}
+
+/* thought-bubble */
+
+.thought-bubble {
+    visibility: hidden;
+    height: 180px;
+    width: 180px;
+    background: url("../data/img/UI/gedankenblasen.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    position: fixed;
+    bottom: 300px;
+    margin-left: 120px;
+    z-index: 5;
+}
+
+.thought-bubble.correct{
+    background-position: 0 0;
+}
+
+.thought-bubble.incorrect{
+    background-position: -180px 0px;
+}
+
+.thought-bubble.hungry{
+    background-position: -360px 0px;
+}
+
+.thought-bubble.happy{
+    background-position: -540px 0px;
+}
+
+/*login*/
+.form-signin{
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(to bottom, rgba(0,119,8, 0.4), rgba(0,50,5, 0.2));
+    padding: 40px;
+    width: 80%;
+}
+
+.form-signin .form-control{
+    height:60px;
+    font-size:30px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-signin .form-signin-heading{
+    font-size:40px;
+}
+
+#login-button{
+
+}
+
+div.error-message {
+    color: red;
+    font-size: 20px;
+}
+
+input.form-control.error {
+    border-color: red;
+    border-width: 4px;
+}
+
+.login-container .tape-recorder {
+    margin-left: 34%;
+}
+
+/* level selection view */
+
+/* level selection */
+.level-selection {
+    background: linear-gradient(to bottom, rgba(0,119,8, 0.4), rgba(0,50,5, 0.2));
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    width: 90%;
+    border-radius: 15px;
+    margin-top: 10%;
+    height: 400px;
+}
+
+.level-selection li {
+    list-style: none;
+    display: inline-block;
+}
+
+.level-selection .main-level > li {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+    height: 56px;
+    text-align: center;
+    width: 100px;
+    /*background-color: #8A2BE2;
+    border-radius: 25px;
+    line-height: 40px;
+    font-size: 25px;
+    font-weight: bold;*/
+}
+
+.level-selection .sub-level{
+    display: none;
+    float:right;
+    margin-right: 15%;
+    margin-top: -165px;
+    /*background-color: #777;*/
+}
+
+.level-selection .sub-level > li {
+    cursor: pointer;
+    height: 60px;
+    text-align: center;
+    width: 75px;
+    margin-bottom: 15px;
+
+    /*background-color: #8A2BE2;
+    border-radius: 15px;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: bold;*/
+}
+
+/*.level-selection li.disabled {
+    background-color: grey;
+}
+
+div.level-selection > ul li.selected {
+    background-color: #ffbf27;
+}*/
+
+.level-selection-container .tape-recorder {
+    margin-left: 35%;
+}
+
+#level-select-button.disabled{
+    visibility: hidden;
+}
+
+
+.exercise-a{
+    background: url(../data/img/UI/hauptUebungen.png) no-repeat;
+    background-position: 0px 0px;
+}
+
+.exercise-a:hover{
+    background-position: -100px 0px;
+}
+
+.exercise-a.selected{
+    background-position: -200px 0px;
+}
+
+.exercise-a.disabled{
+    background-position: -300px 0px;
+}
+
+.exercise-b{
+    background: url(../data/img/UI/hauptUebungen.png) no-repeat;
+    background-position: 0px -56px;
+}
+
+.exercise-b:hover{
+    background-position: -100px -56px;
+}
+
+.exercise-b.selected{
+    background-position: -200px -56px;
+}
+
+.exercise-b.disabled{
+    background-position: -300px -56px;
+}
+
+.exercise-c{
+    background: url(../data/img/UI/hauptUebungen.png) no-repeat;
+    background-position: 0px -112px;
+}
+
+.exercise-c:hover{
+    background-position: -100px -112px;
+}
+
+
+.exercise-c.selected{
+    background-position: -200px -112px;
+}
+
+.exercise-c.disabled{
+    background-position: -300px -112px;
+}
+
+.exercise-d{
+    background: url(../data/img/UI/hauptUebungen.png) no-repeat;
+    background-position: 0px -168px;
+}
+
+.exercise-d:hover{
+    background-position: -100px -168px;
+}
+
+
+.exercise-d.selected{
+    background-position: -200px -168px;
+}
+
+.exercise-d.disabled{
+    background-position: -300px -168px;
+}
+
+.exercise-e{
+    background: url(../data/img/UI/hauptUebungen.png) no-repeat;
+    background-position: 0px -224px;
+}
+
+.exercise-e:hover{
+    background-position: -100px -224px;
+}
+
+.exercise-e.selected{
+    background-position: -200px -224px;
+}
+
+.exercise-e.disabled{
+    background-position: -300px -224px;
+}
+
+
+.subexercise-1{
+    background: url(../data/img/UI/unterUebungen.png) no-repeat;
+    background-position: 0px 0px;
+}
+
+.subexercise-1:hover{
+    background-position: -70px 0px;
+}
+
+
+.subexercise-1.selected{
+    background-position: -140px 0px;
+}
+
+.subexercise-1.disabled{
+    background-position: -210px 0px;
+}
+
+
+.subexercise-2{
+    background: url(../data/img/UI/unterUebungen.png) no-repeat;
+    background-position: 0px -60px;
+}
+
+.subexercise-2:hover{
+    background-position: -70px -60px;
+}
+
+
+.subexercise-2.selected{
+    background-position: -140px -60px;
+}
+
+.subexercise-2.disabled{
+    background-position: -210px -60px;
+}
+
+.subexercise-3{
+    background: url(../data/img/UI/unterUebungen.png) no-repeat;
+    background-position: 0px -120px;
+}
+
+.subexercise-3:hover{
+    background-position: -70px -120px;
+}
+
+
+.subexercise-3.selected{
+    background-position: -140px -120px;
+}
+
+.subexercise-3.disabled{
+    background-position: -210px -120px;
+}
+
+.subexercise-4{
+    background: url(../data/img/UI/unterUebungen.png) no-repeat;
+    background-position: 0px -180px;
+}
+
+.subexercise-4:hover{
+    background-position: -70px -180px;
+}
+
+
+.subexercise-4.selected{
+    background-position: -140px -180px;
+}
+
+.subexercise-4.disabled{
+    background-position: -210px -180px;
+}
+
+.subexercise-5{
+    background: url(../data/img/UI/unterUebungen.png) no-repeat;
+    background-position: 0px -240px;
+}
+
+.subexercise-5:hover{
+    background-position: -70px -240px;
+}
+
+
+.subexercise-5.selected{
+    background-position: -140px -240px;
+}
+
+.subexercise-5.disabled{
+    background-position: -210px -240px;
+}
+
+
+.subexercise-6{
+    background: url(../data/img/UI/unterUebungen.png) no-repeat;
+    background-position: 0px -300px;
+}
+
+.subexercise-6:hover{
+    background-position: -70px -300px;
+}
+
+
+.subexercise-6.selected{
+    background-position: -140px -300px;
+}
+
+.subexercise-6.disabled{
+    background-position: -210px -300px;
+}
+
+
+/* companion selection view */
+
+.companion-selection-container {
+    display: none;
+}
+
+.companion-selection-container .companion{
+    bottom: 240px;
+    margin-left: 150px;
+}
+
+.companion-selection-container #select-companion {
+    position:fixed;
+    bottom: 140px;
+    margin-left: 250px;
+}
+
+#tree-stump {
+    background: url("../data/img/UI/baumstumpf.png") no-repeat scroll 0 0 / 100% auto rgba(0, 0, 0, 0);
+    height: 400px;
+    width: 480px;
+    position: fixed;
+    bottom: 0;
+    margin-left: 60px;
+}
+
+#prev-companion{
+    background: url("../data/img/UI/pfeile.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+#prev-companion:hover{
+    background: url("../data/img/UI/pfeile.png") no-repeat scroll -200px 0 rgba(0, 0, 0, 0);
+}
+
+#next-companion{
+    background: url("../data/img/UI/pfeile.png") no-repeat scroll 0 -200px rgba(0, 0, 0, 0);
+}
+
+#next-companion:hover{
+    background: url("../data/img/UI/pfeile.png") no-repeat scroll -200px -200px rgba(0, 0, 0, 0);
+}
+
+.companion-arrows{
+    cursor: pointer;
+    height: 200px;
+    text-align: center;
+    width: 200px;
+    position:relative;
+    margin-top: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* play view */
+
+.play-view-container {
+    display: none;
+}
+
+/* play view tape recorder */
+.play-view-container .tape-recorder{
+    margin-top: -200px;
+    margin-left: 200px
+}
+
+/* play view companion */
+.play-view-container .companion {
+    margin-top: 100px;
+    margin-left: -100px;
+}
+
+/* anlautlineal */
+
+#character-ruler{
+
+}
+
+.character-ruler-row{
+    
+}
+
+#wordrow-one{
+
+}
+
+#wordrow-two{
+
+}
+
+.character-group {
+    background-color: #999;
+    border: 2px solid black;
+    height: 130px;
+    margin-left: 5px;
+    margin-top: 5px;
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    z-index: 9999;
+    position: relative;
+}
+
+#wordrow-two .character-group {
+    height: 145px;
+}
+
+.character-box{
+    display: inline-block;
+    background-color: white;
+    cursor: pointer;
+    height: 115px;
+    margin-left: 2px;
+    margin-top: 7px;
+    text-align: center;
+    width: 46px;
+    padding: 5px;
+}
+
+.character-box.correct {
+    background-color: #3cc846;
+}
+
+.character-box.incorrect {
+    background-color: #e066ab;
+}
+
+#wordrow-two .character-box{
+    height: 130px;
+}
+
+.character-box > div{
+    background-color: #c341b3;
+    font-size: 15pt;
+    height: 32px;
+    margin-top: 2px;
+    text-align: center;
+}
+
+#wordrow-two .character-box > div{
+    height: 56px;
+
+}
+
+.character-box.vowel > div{
+    background-color: #ffcd55;
+}
+
+.character-box > img{
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-size: 100% auto;
+    height: auto;
+    width: 92%;
+}
+
+.character-hidden {
+    /* triangle */
+    width: 20px;
+    height: 20px;
+    border-style: inset;
+    border-width: 35px 20px 0px 20px;
+    border-color: #007bff transparent transparent transparent;
+    transform:rotate(360deg);
+    -ms-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);
+    -o-transform:rotate(360deg);
+
+    /* position */
+    display: inline-block;
+    top: -20px;
+    position: absolute;
+    margin-left: -22px;
+    /*overflow: hidden;*/
+}
+
+.character-hidden > p{
+    text-align: center;
+    top: -30px;
+    position: absolute;
+    left: -4px;
+    z-index: 15;
+}
+
+.character-hidden.xy {
+    /* triangle */
+    width: 40px;
+    height: 40px;
+    border-style: inset;
+    border-width: 35px 40px 0px 40px;
+    border-color: #007bff transparent transparent transparent;
+    transform:rotate(360deg);
+    -ms-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);
+    -o-transform:rotate(360deg);
+
+    /* position */
+    display: inline-block;
+    top: -20px;
+    position: absolute;
+    margin-left: -42px;
+    /*overflow: hidden*/
+
+    z-index: 10;
+}
+
+.character-hidden.xy > p{
+    left: -7px;
+}
+
+.character-space {
+    display:inline-block;
+    width: 3px;
+}
+
+/* other elements */
+#start-button {
+    background: url("../data/img/UI/start.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 125px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.game-controls {
+    margin-top: -40px;
+}
+
+#sound-button {
+    background: url("../data/img/UI/ui_elements_2.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 180px;
+    margin: auto;
+    text-align: center;
+    width: 180px;
+    background-position: 0 -180px;
+    float: right;
+}
+
+#word-image {
+    background: url("../data/img/UI/ui_elements_2.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 180px;
+    margin: auto;
+    text-align: center;
+    width: 180px;
+    background-position: 0 0;
+    float: left;
+    margin-left: 100px;
+}
+
+#word-image.real-image {
+    background-size: 100% auto;
+    height: 150px;
+    width: 150px;
+    border: black;
+    border-style: solid;
+    border-width: 4px;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+#tree {
+    background: url("../data/img/UI/baum.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 800px;
+    width: 900px;
+    z-index:0;
+    position: fixed;
+    bottom: 0px;
+}
+
+#berry {
+    position: fixed;
+    bottom: 360px;
+    margin-left: 510px;
+    z-index:20;
+    background: url("../data/img/UI/traubeKlein.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width: 90px;
+    height: 90px;
+}
+
+#berries-eaten-sign {
+    background: url("../data/img/UI/traubeZaehler.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width: 200px;
+    height: 100px;
+    position: fixed;
+    bottom: 80px;
+    z-index: 20;
+    background-size: 100%;
+    margin-left: 360px;
+}
+
+#berries-eaten-sign > span {
+    margin-left: 105px;
+    width: 100%;
+    height: 100%;
+    line-height: 100px;
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.play-view-container .thought-bubble{
+    margin-left: 15px;
+}
+
+
+/* berries-eaten-container */
+
+.berries-eaten-container {
+    display: none;
+}
+
+.berry-pile {
+    background: url("../data/img/UI/traubenHaufen.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 350px;
+    width: 500px;
+    position: fixed;
+    bottom: 0;
+    margin-left: 120px;
+}
+
+.berries-eaten-container .tape-recorder {
+    margin-left: 25%;
+}
+
+#confirm-logout {
+    margin-top: 40px;
+}
+
+.text-container {
+    margin: auto;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0, 119, 8, 0.4), rgba(0, 50, 5, 0.2)) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    font-size: 35px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.text-container h2,
+.text-container p{
+    text-align: center;
+    color: #933287;
+    font-size: 65px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* mini level selection */
+
+/* level selection */
+.mini-level-selection {
+    background: linear-gradient(to bottom, rgba(0,119,8, 0.4), rgba(0,50,5, 0.2));
+    padding: 20px;
+    border-radius: 15px;
+    height: 150px;
+    position: fixed;
+    bottom: 10px;
+    margin-left: 20px;
+    z-index: 20;
+}
+
+.mini-level-selection li {
+    list-style: none;
+    display: inline-block;
+}
+
+.mini-level-selection .main-level {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+.mini-level-selection .main-level > li {
+    cursor: pointer;
+    height: 40px;
+    text-align: center;
+    width: 70px;
+    /*background-color: #8A2BE2;
+    border-radius: 15px;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: bold;*/
+    margin-top: 80px;
+}
+
+.mini-level-selection .sub-level{
+    display: none;
+    margin-top: -80px;
+    position:absolute;
+}
+
+.mini-level-selection .sub-level > li {
+    cursor: pointer;
+    height: 25px;
+    text-align: center;
+    width: 50px;
+    /*background-color: #8A2BE2;
+    border-radius: 10px;
+    line-height: 25px;
+    font-size: 16px;
+    font-weight: bold;*/    
+}
+
+/*.mini-level-selection li.disabled {
+    background-color: grey;
+}
+
+div.mini-level-selection > ul li.selected {
+    background-color: #ffbf27;
+}*/
+
+#mini-level-select-button {
+    margin-top: -100px;
+    margin-right: -120px;
+}
+
+#mini-level-select-button.disabled{
+    visibility: hidden
+}
+
+
+.small.exercise-a{
+    background: url(../data/img/UI/hauptUebungenKlein.png) no-repeat;
+    background-position: 0px 0px;
+}
+
+.small.exercise-a:hover{
+    background-position: -70px 0px;
+}
+
+.small.exercise-a.selected{
+    background-position: -140px 0px;
+}
+
+.small.exercise-a.disabled{
+    background-position: -210px 0px;
+}
+
+.small.exercise-b{
+    background: url(../data/img/UI/hauptUebungenKlein.png) no-repeat;
+    background-position: 0px -40px;
+}
+
+.small.exercise-b:hover{
+    background-position: -70px -40px;
+}
+
+.small.exercise-b.selected{
+    background-position: -140px -40px;
+}
+
+.small.exercise-b.disabled{
+    background-position: -210px -40px;
+}
+
+.small.exercise-c{
+    background: url(../data/img/UI/hauptUebungenKlein.png) no-repeat;
+    background-position: 0px -80px;
+}
+
+.small.exercise-c:hover{
+    background-position: -70px -80px;
+}
+
+
+.small.exercise-c.selected{
+    background-position: -140px -80px;
+}
+
+.small.exercise-c.disabled{
+    background-position: -210px -80px;
+}
+
+.small.exercise-d{
+    background: url(../data/img/UI/hauptUebungenKlein.png) no-repeat;
+    background-position: 0px -120px;
+}
+
+.small.exercise-d:hover{
+    background-position: -70px -120px;
+}
+
+
+.small.exercise-d.selected{
+    background-position: -140px -120px;
+}
+
+.small.exercise-d.disabled{
+    background-position: -210px -120px;
+}
+
+.small.exercise-e{
+    background: url(../data/img/UI/hauptUebungenKlein.png) no-repeat;
+    background-position: 0px -160px;
+}
+
+.small.exercise-e:hover{
+    background-position: -70px -160px;
+}
+
+.small.exercise-e.selected{
+    background-position: -140px -160px;
+}
+
+.small.exercise-e.disabled{
+    background-position: -210px -160px;
+}
+
+
+.small.subexercise-1{
+    background: url(../data/img/UI/unterUebungenKlein.png) no-repeat;
+    background-position: 0px 0px;
+}
+
+.small.subexercise-1:hover{
+    background-position: -50px 0px;
+}
+
+
+.small.subexercise-1.selected{
+    background-position: -100px 0px;
+}
+
+.small.subexercise-1.disabled{
+    background-position: -150px 0px;
+}
+
+
+.small.subexercise-2{
+    background: url(../data/img/UI/unterUebungenKlein.png) no-repeat;
+    background-position: 0px -25px;
+}
+
+.small.subexercise-2:hover{
+    background-position: -50px -25px;
+}
+
+
+.small.subexercise-2.selected{
+    background-position: -100px -25px;
+}
+
+.small.subexercise-2.disabled{
+    background-position: -150px -25px;
+}
+
+.small.subexercise-3{
+    background: url(../data/img/UI/unterUebungenKlein.png) no-repeat;
+    background-position: 0px -50px;
+}
+
+.small.subexercise-3:hover{
+    background-position: -50px -50px;
+}
+
+
+.small.subexercise-3.selected{
+    background-position: -100px -50px;
+}
+
+.small.subexercise-3.disabled{
+    background-position: -150px -50px;
+}
+
+.small.subexercise-4{
+    background: url(../data/img/UI/unterUebungenKlein.png) no-repeat;
+    background-position: 0px -75px;
+}
+
+.small.subexercise-4:hover{
+    background-position: -50px -75px;
+}
+
+
+.small.subexercise-4.selected{
+    background-position: -100px -75px;
+}
+
+.small.subexercise-4.disabled{
+    background-position: -150px -75px;
+}
+
+.small.subexercise-5{
+    background: url(../data/img/UI/unterUebungenKlein.png) no-repeat;
+    background-position: 0px -100px;
+}
+
+.small.subexercise-5:hover{
+    background-position: -50px -100px;
+}
+
+
+.small.subexercise-5.selected{
+    background-position: -100px -100px;
+}
+
+.small.subexercise-5.disabled{
+    background-position: -150px -100px;
+}
+
+
+.small.subexercise-6{
+    background: url(../data/img/UI/unterUebungenKlein.png) no-repeat;
+    background-position: 0px -125px;
+}
+
+.small.subexercise-6:hover{
+    background-position: -50px -125px;
+}
+
+
+.small.subexercise-6.selected{
+    background-position: -100px -125px;
+}
+
+.small.subexercise-6.disabled{
+    background-position: -150px -125px;
+}

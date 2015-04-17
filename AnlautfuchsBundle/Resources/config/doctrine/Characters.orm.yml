@@ -1,0 +1,41 @@
+AnlautfuchsBundle\Entity\Characters:
+    type: entity
+    repositoryClass: AnlautfuchsBundle\Entity\CharacterRepository
+    table: characters
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        character:
+            type: string
+            nullable: false
+            length: 5
+            fixed: false
+            comment: ''
+        image:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        row:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        vowel:
+            type: boolean
+            nullable: false
+            comment: ''
+        display:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    lifecycleCallbacks: {  }

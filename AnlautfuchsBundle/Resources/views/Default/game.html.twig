@@ -1,0 +1,221 @@
+{% extends "AnlautfuchsBundle:Default:base.html.twig" %}
+{% block header %}Wähle deine Übung{% endblock %}
+{% block body %}
+<div class="row">
+  <div class="level-selection-container">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      <div class="level-selection">
+        <ul class="main-level">
+          {% for level in parentLevels %}
+            <li class="{{ level.getCssClass() }}" level-id="{{ level.getId() }}"></li>
+              {% if level.getChildren() %}
+                <ul class="sub-level">
+                  {% for child in level.getChildren() %}
+                    <li class="{{ child.getCssClass() }}" level-id="{{ child.getId() }}"></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+          {% endfor %}
+        </ul>
+        <div id="level-select-button" class="select-button disabled">
+
+        </div>
+      </div>
+      <div class="tape-recorder"> </div>
+    </div>
+    <div class="col-md-3">
+      <div class="companion"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="companion-selection-container">
+
+    <div class="col-md-4">
+      <div id="prev-companion" class="companion-arrows"></div>
+    </div>
+    <div class="col-md-4">
+      <div class="companion"></div>
+      <div id="tree-stump"></div>
+      <div id="select-companion" class="select-button"></div>
+    </div>
+    <div class="col-md-4">
+      <div id="next-companion" class="companion-arrows" /></div>
+      <div class="tape-recorder"> </div>
+    </div>
+  </div>   
+</div>
+<div class="play-view-container">
+  <div id="character-ruler">
+
+    <div class="row">
+      <div id="wordrow-one">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10 character-ruler-row">
+          <div class="character-group">
+            {% for character in firstRow %}
+              {% if character.getDisplay == 1 %}
+                <div character="{{ character.getCharacter() }}" class="character-box 
+                  {% if character.getVowel() == 1 %} vowel {% endif %}
+                ">
+                  <div>{{ character.getCharacter() }} {{ character.getCharacter()|upper}}</div>
+                  <img src="{{ asset('bundles/anlautfuchs/' ~ character.getImage() ) }}"></img>
+                </div>
+              {% else %}
+                <div class='character-hidden {{ character.getCharacter() }}'>
+                  <p> {{ character.getCharacter()|upper}} </p>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+      </div>
+    </div><!-- row -->
+
+
+    <div class="row">
+      <div id="wordrow-two">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10 character-ruler-row">
+          {% set i = 0 %}
+          {% for character in secondRow %}
+            {% if i == 0 %}
+              <div class="character-group">
+            {% elseif i % 3 == 0 %}
+              </div>
+              <div class="character-group">
+            {% endif %}
+           <div character="{{ character.getCharacter() }}" class="character-box 
+              {% if character.getVowel == 1 %} vowel{% endif %}
+            ">
+              <div>{{ character.getCharacter() }}<br/>{{ character.getCharacter()|upper}}</div>
+              <img src="{{ asset('bundles/anlautfuchs/' ~ character.getImage() ) }}"></img>
+            </div>
+            {% set i = i+1 %}
+          {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+      </div>
+    </div><!-- row -->
+
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3">
+          <div id="start-button"> </div>
+
+          <div class="game-controls">
+            <div id="sound-button"></div>
+            <div id="word-image"></div>
+          </div>
+          <div class="mini-level-selection">
+            <ul class="main-level">
+              {% for level in parentLevels %}
+                <li class="{{ level.getCssClass() }} small" level-id="{{ level.getId() }}"></li>
+                  {% if level.getChildren() %}
+                    <ul class="sub-level">
+                      {% for child in level.getChildren() %}
+                        <li class="{{ child.getCssClass() }} small" level-id="{{ child.getId() }}"></li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+              {% endfor %}
+            </ul>
+            <div id="mini-level-select-button" class="select-button disabled"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div id="berry"></div>
+          <div id="tree"></div>
+          <div id="berries-eaten-sign"><span>x100</span></div>
+        </div>
+        <div class="col-md-3">
+          <div class="thought-bubble"></div>
+          <div class="companion"></div>
+          <div class="tape-recorder"> </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="berries-eaten-container">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-3">
+        <div class="berry-pile"></div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-container">
+            <h2>Super!</h2>
+            Der Fuchs hat bisher
+            <p id="number-of-berries">0 Trauben</p>
+            gefressen!
+            <div id="confirm-logout" class="select-button"></div>
+        </div>
+        <div class="tape-recorder"></div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="thought-bubble"></div>
+        <div class="companion"></div>
+      </div>
+      <div class="col-md-1">
+      </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+  {{ parent() }}
+
+
+   {# Game #}
+   <script src="{{ asset('bundles/anlautfuchs/js/Game.js') }}"></script>
+
+  {# Models #}
+   <script src="{{ asset('bundles/anlautfuchs/js/CompanionModel.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/WordModel.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/UserModel.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/LevelModel.js') }}"></script>
+
+   {# Views #}
+   <script src="{{ asset('bundles/anlautfuchs/js/CompanionSelectionView.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/LevelSelectionView.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/PlayView.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/BerriesEatenView.js') }}"></script>
+
+   {# Manager #}
+   <script src="{{ asset('bundles/anlautfuchs/js/SoundManager.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/AnimationManager.js') }}"></script>  
+
+   {# Controllers #}
+   <script src="{{ asset('bundles/anlautfuchs/js/AjaxController.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/GameController.js') }}"></script>
+
+
+
+   {# As last init the Game #}
+   <script>
+      $(document).ready(function(){
+        Game.init();
+      });
+
+   </script>
+
+{% endblock %}

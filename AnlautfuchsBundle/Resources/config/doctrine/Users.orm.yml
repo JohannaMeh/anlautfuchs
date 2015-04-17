@@ -1,0 +1,61 @@
+AnlautfuchsBundle\Entity\Users:
+    type: entity
+    repositoryClass: AnlautfuchsBundle\Entity\UserRepository
+    table: users
+    indexes:
+        current_level_id:
+            columns:
+                - current_level_id
+        user_companion:
+            columns:
+                - user_companion_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        password:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        berriesEaten:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: berries_eaten
+            options:
+                default: 0
+    manyToOne:
+        currentLevel:
+            targetEntity: Levels
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                current_level_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        userCompanion:
+            targetEntity: Companion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_companion_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

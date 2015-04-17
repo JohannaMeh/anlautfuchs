@@ -1,0 +1,57 @@
+index:
+    path:     /
+    defaults: { _controller: AnlautfuchsBundle:Login:index }
+    methods: [GET]
+
+index_validation:
+    path:     /
+    defaults: { _controller: AnlautfuchsBundle:Login:login }
+    methods: [POST]
+
+login:
+    path:     /login
+    defaults: { _controller: AnlautfuchsBundle:Login:index }
+    methods: [GET]
+
+login_validation:
+    path:     /login
+    defaults: { _controller: AnlautfuchsBundle:Login:login }
+    methods: [POST]
+
+logout:
+    path: /logout
+    defaults: { _controller: AnlautfuchsBundle:Login:logout }
+
+
+game:
+    path:     /game
+    defaults: { _controller: AnlautfuchsBundle:Game:index }
+
+
+backend:
+    path:     /backend/level/{levelId}
+    defaults: { _controller: AnlautfuchsBundle:Level:index }
+
+backend_user:
+    path:     /backend/user/
+    defaults: { _controller: AnlautfuchsBundle:User:index }
+
+backend_user_disabled_levels:
+    path:     /backend/user/disabled/levels
+    defaults: { _controller: AnlautfuchsBundle:User:disabledLevels }
+
+backend_user_save_level:
+    path:     /backend/user/save/level/{levelId}
+    defaults: { _controller: AnlautfuchsBundle:User:saveLevel }
+
+backend_user_save_companion:
+    path:     /backend/user/save/companion/{companionType}
+    defaults: { _controller: AnlautfuchsBundle:User:saveCompanion }
+
+backend_user_berries_eaten:
+    path:   /backend/user/save/berries/eaten/{berries}
+    defaults: { _controller: AnlautfuchsBundle:User:saveBerriesEaten }
+
+backend_companions:
+    path:   /backend/companion/
+    defaults: { _controller: AnlautfuchsBundle:Companion:index }

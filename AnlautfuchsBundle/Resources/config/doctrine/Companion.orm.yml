@@ -1,0 +1,25 @@
+AnlautfuchsBundle\Entity\Companion:
+    type: entity
+    table: companion
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        type:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        sorting:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    lifecycleCallbacks: {  }

@@ -1,0 +1,90 @@
+{% extends "AnlautfuchsBundle:Default:base.html.twig" %}
+{% block body %}
+<div class="login-container">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6 text-center">
+    <form method="POST" class="form-signin">
+      <input type="hidden" name="_target_path" value="game" />
+      <h2 class="form-signin-heading">Login</h2>
+      <label for="inputUserName" class="sr-only">Nutzername</label>
+      <input name="username" type="text" id="inputUserName" class="form-control {% if show_username_notice %}error{% endif %}" placeholder="Nutzername" required autofocus>
+      {% if show_username_notice %}<div class="username-notice error-message">Falscher Nutzername</div>{% endif %}
+      <label for="inputPassword" class="sr-only">Passwort</label>
+      <input name="password" type="password" id="inputPassword" class="form-control {% if show_password_notice %}error{% endif %}" placeholder="Passwort" required>
+      {% if show_password_notice %}<div class="password-notice error-message">Falsches Passwort</div>{% endif %}
+      <button id="login-button" class="select-button" type="submit"></button>
+    </form>
+    <div class="tape-recorder"></div>
+  </div>
+  <div class="col-md-3">
+      <div class="thought-bubble hungry"></div>
+      <div class="companion"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+
+  <script>
+
+    var Game = {
+
+      init: function() {
+      }
+    };
+  </script>
+
+  {# Manager #}
+  <script src="{{ asset('bundles/anlautfuchs/js/SoundManager.js') }}"></script>
+  <script src="{{ asset('bundles/anlautfuchs/js/AnimationManager.js') }}"></script>
+
+
+
+  {# As last init the Game #}
+  <script>
+    
+
+    $(document).ready(function(){
+      var soundManager = Game.SoundManager.init();
+
+      var animationManager = Game.AnimationManager.init();
+      animationManager.setCurrentContainer('body');
+
+      $(soundManager).on('soundEnded', function(){
+        console.log('sound ended');
+        animationManager.stopTapeRecorder();
+      });
+
+      $(soundManager).on('soundStarted', function(){
+        console.log('sound started');
+        animationManager.playTapeRecorder();
+      });
+
+
+    $('.tape-recorder').on('click', soundManager.toggleLoginSound);
+
+      $('#back-button').hide();
+      $('#logout-button').hide();
+
+      soundManager.toggleLoginSound();
+      
+      setHungry();
+
+        
+      function setHungry(){
+        $('.thought-bubble').css('visibility', 'visible');
+        animationManager.setCompanionFeeling('hungry', false);
+        setTimeout(setNormal, 3000);
+      }
+
+      function setNormal(){
+        $('.thought-bubble').css('visibility', 'hidden');
+        animationManager.resetCompanionFeeling();
+        setTimeout(setHungry, 6000);
+      }
+    });
+
+  </script>
+{% endblock %}

@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Der Anlautfuchs{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    {% block stylesheets %}
+      <link href="{{ asset('bundles/anlautfuchs/css/bootstrap.min.css') }}" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="{{ asset('bundles/anlautfuchs/css/game.css') }}" />
+    {% endblock %}
+  </head>
+  <body>
+
+    <div class="container-fluid" id="header">
+      <div class="row">
+        <div class="col-md-2">
+          <div id="back-button">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div id="header-text">
+            {% block header %}Der Anlautfuchs{% endblock %}
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div id="logout-button">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img id="img-background" src="{{ asset('bundles/anlautfuchs/data/img/hintergrund.png') }}">
+    <div class="container-fluid" id="game-body">
+      {% block body %}
+      
+      {% endblock %}
+    </div>
+    {% block javascripts %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    
+    <script src="{{ asset('bundles/anlautfuchs/js/lib/bootstrap.min.js') }}"></script>
+
+    <script src="{{ asset('bundles/anlautfuchs/js/lib/jquery.animateSprite.min.js') }}"></script>
+
+    <script src="{{ asset('bundles/anlautfuchs/js/lib/howler.min.js') }}"></script>
+    {% endblock %}
+  </body>
+</html>

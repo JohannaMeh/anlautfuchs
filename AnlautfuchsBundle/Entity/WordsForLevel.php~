@@ -1,0 +1,101 @@
+<?php
+
+namespace Johanna\TestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * WordsForLevel
+ *
+ * @ORM\Table(name="words_for_level", indexes={@ORM\Index(name="level_index", columns={"level_id"}), @ORM\Index(name="word_index", columns={"word_id"})})
+ * @ORM\Entity
+ */
+class WordsForLevel
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Johanna\TestBundle\Entity\Words
+     *
+     * @ORM\ManyToOne(targetEntity="Johanna\TestBundle\Entity\Words")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="word_id", referencedColumnName="id")
+     * })
+     */
+    private $word;
+
+    /**
+     * @var \Johanna\TestBundle\Entity\Levels
+     *
+     * @ORM\ManyToOne(targetEntity="Johanna\TestBundle\Entity\Levels")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="level_id", referencedColumnName="id")
+     * })
+     */
+    private $level;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set word
+     *
+     * @param \Johanna\TestBundle\Entity\Words $word
+     * @return WordsForLevel
+     */
+    public function setWord(\Johanna\TestBundle\Entity\Words $word = null)
+    {
+        $this->word = $word;
+
+        return $this;
+    }
+
+    /**
+     * Get word
+     *
+     * @return \Johanna\TestBundle\Entity\Words 
+     */
+    public function getWord()
+    {
+        return $this->word;
+    }
+
+    /**
+     * Set level
+     *
+     * @param \Johanna\TestBundle\Entity\Levels $level
+     * @return WordsForLevel
+     */
+    public function setLevel(\Johanna\TestBundle\Entity\Levels $level = null)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return \Johanna\TestBundle\Entity\Levels 
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+}
