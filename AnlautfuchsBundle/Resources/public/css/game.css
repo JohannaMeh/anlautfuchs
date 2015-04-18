@@ -73,6 +73,18 @@ html, body{
     margin: auto;
 }
 
+@media (max-width: 1380px){
+    .tape-recorder {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
+
+    /*.login-container .tape-recorder{
+        zoom: 1;
+        -moz-transform: scale(1);
+    }*/
+}
+
 .companion {
     background: url("../data/img/animation/fuchsKlein.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 350px;
@@ -81,6 +93,13 @@ html, body{
     z-index: 3;
     bottom: 0;
     margin: auto;
+}
+
+@media (max-width: 1380px){
+    .companion {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
 }
 
 /* select-button */
@@ -92,6 +111,14 @@ html, body{
     width: 100px;
     border: none;
     margin: 0 auto;
+}
+
+
+@media (max-width: 1380px){
+    .select-button {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
 }
 
 .select-button:hover{
@@ -107,6 +134,14 @@ html, body{
     margin: auto;
 }
 
+
+@media (max-width: 1380px){
+    #back-button {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
+}
+
 #back-button:hover{
     background: url("../data/img/UI/ui_elements_1.png") no-repeat scroll -70px 0 rgba(0, 0, 0, 0);
 }
@@ -118,6 +153,13 @@ html, body{
     height: 70px;
     width: 70px;
     margin: auto;
+}
+
+@media (max-width: 1380px){
+    #logout-button {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
 }
 
 #logout-button:hover {
@@ -135,6 +177,13 @@ html, body{
     bottom: 300px;
     margin-left: 120px;
     z-index: 5;
+}
+
+@media (max-width: 1380px){
+    .thought-bubble {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
 }
 
 .thought-bubble.correct{
@@ -215,6 +264,13 @@ input.form-control.error {
     display: inline-block;
 }
 
+@media (max-width: 1380px){
+    .level-selection li {
+        zoom: 0.7;
+        -moz-transform: scale(0.8);
+    }
+}
+
 .level-selection .main-level > li {
     margin-top: 100px;
     margin-bottom: 30px;
@@ -238,6 +294,13 @@ input.form-control.error {
     /*background-color: #777;*/
 }
 
+@media (max-width: 1380px){
+    .level-selection .sub-level {
+        margin-right: 18%;
+        margin-top: -120px;
+    }
+}
+
 .level-selection .sub-level > li {
     cursor: pointer;
     height: 60px;
@@ -250,6 +313,12 @@ input.form-control.error {
     line-height: 30px;
     font-size: 20px;
     font-weight: bold;*/
+}
+
+@media (max-width: 1380px){
+    .level-selection .sub-level > li {
+        width: 70px;
+    }
 }
 
 /*.level-selection li.disabled {
@@ -494,6 +563,13 @@ div.level-selection > ul li.selected {
     margin-left: 60px;
 }
 
+@media (max-width: 1380px){
+    #tree-stump {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
+}
+
 #prev-companion{
     background: url("../data/img/UI/pfeile.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
@@ -521,6 +597,14 @@ div.level-selection > ul li.selected {
     margin-right: auto;
 }
 
+
+@media (max-width: 1380px){
+    .companion-arrows {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
+}
+
 /* play view */
 
 .play-view-container {
@@ -533,10 +617,23 @@ div.level-selection > ul li.selected {
     margin-left: 200px
 }
 
+
+@media (max-width: 1380px){
+    .play-view-container .tape-recorder {
+        margin-left: 120px;
+    }
+}
+
 /* play view companion */
 .play-view-container .companion {
     margin-top: 100px;
     margin-left: -100px;
+}
+
+@media (max-width: 1380px){
+    .play-view-container .companion {
+        margin-left: -265px;
+    }
 }
 
 /* anlautlineal */
@@ -697,6 +794,14 @@ div.level-selection > ul li.selected {
     cursor: pointer;
 }
 
+@media (max-width: 1380px){
+    #start-button {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+        margin-left: 160px;
+    }
+}
+
 .game-controls {
     margin-top: -40px;
 }
@@ -712,6 +817,14 @@ div.level-selection > ul li.selected {
     float: right;
 }
 
+
+@media (max-width: 1380px){
+    #sound-button {
+        zoom: 0.7;
+        -moz-transform: scale(0.7);
+    }
+}
+
 #word-image {
     background: url("../data/img/UI/ui_elements_2.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     cursor: pointer;
@@ -722,6 +835,14 @@ div.level-selection > ul li.selected {
     background-position: 0 0;
     float: left;
     margin-left: 100px;
+}
+
+
+@media (max-width: 1380px){
+    #word-image {
+        zoom: 0.7;
+        -moz-transform: scale(0.7);
+    }
 }
 
 #word-image.real-image {
@@ -744,6 +865,13 @@ div.level-selection > ul li.selected {
     bottom: 0px;
 }
 
+@media (max-width: 1380px){
+    #tree {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
+}
+
 #berry {
     position: fixed;
     bottom: 360px;
@@ -752,6 +880,14 @@ div.level-selection > ul li.selected {
     background: url("../data/img/UI/traubeKlein.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     width: 90px;
     height: 90px;
+}
+
+
+@media (max-width: 1380px){
+    #berry {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
 }
 
 #berries-eaten-sign {
@@ -763,6 +899,13 @@ div.level-selection > ul li.selected {
     z-index: 20;
     background-size: 100%;
     margin-left: 360px;
+}
+
+@media (max-width: 1380px){
+    #berries-eaten-sign {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
 }
 
 #berries-eaten-sign > span {
@@ -777,6 +920,13 @@ div.level-selection > ul li.selected {
 
 .play-view-container .thought-bubble{
     margin-left: 15px;
+}
+
+
+@media (max-width: 1380px){
+    .play-view-container .thought-bubble {
+        margin-left: -195px;
+    }
 }
 
 

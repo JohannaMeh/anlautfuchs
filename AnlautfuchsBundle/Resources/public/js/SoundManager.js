@@ -1,6 +1,6 @@
 Game.SoundManager = (function(){
     var that = {},
-    basisUrl = '/bundles/anlautfuchs/',
+    basisUrl = '/bundles/johannatest/',
 
     /* sounds */
     wordSoundUrl = null,

@@ -1,6 +1,6 @@
 Game.PlayView = (function(){
     var that = {},
-    basisUrl = '/bundles/anlautfuchs/',
+    basisUrl = '/bundles/johannatest/',
     gameStarted = false,
 
     showImage = null,
@@ -87,7 +87,7 @@ Game.PlayView = (function(){
     prepareLevel = function(showSecondRow, newShowImage){
         $('.game-controls').css('visibility', 'hidden');
         $('#word-image').css('visibility','hidden');
-        $('#start-button').css('visibility', 'visible');
+        $('#start-button').show();
 
         if(showSecondRow){
             $('#wordrow-two').css('visibility','visible');
@@ -112,7 +112,7 @@ Game.PlayView = (function(){
 
     onStartButtonClicked = function(event){
         $('.game-controls').css('visibility', 'visible');
-        $('#start-button').css('visibility', 'hidden');
+        $('#start-button').hide();
 
 
         if(showImage){
