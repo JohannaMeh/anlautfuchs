@@ -1,4 +1,4 @@
-{% extends "JohannaTestBundle:Default:base.html.twig" %}
+{% extends "AnlautfuchsBundle:Default:base.html.twig" %}
 {% block header %}Wähle deine Übung{% endblock %}
 {% block body %}
 <div class="row">
@@ -60,7 +60,7 @@
                   {% if character.getVowel() == 1 %} vowel {% endif %}
                 ">
                   <div>{{ character.getCharacter() }} {{ character.getCharacter()|upper}}</div>
-                  <img src="{{ asset('bundles/johannatest/' ~ character.getImage() ) }}"></img>
+                  <img src="{{ asset('bundles/anlautfuchs/' ~ character.getImage() ) }}"></img>
                 </div>
               {% else %}
                 <div class='character-hidden {{ character.getCharacter() }}'>
@@ -89,7 +89,7 @@
               {% if character.getVowel == 1 %} vowel{% endif %}
             ">
               <div>{{ character.getCharacter() }}<br/>{{ character.getCharacter()|upper}}</div>
-              <img src="{{ asset('bundles/johannatest/' ~ character.getImage() ) }}"></img>
+              <img src="{{ asset('bundles/anlautfuchs/' ~ character.getImage() ) }}"></img>
             </div>
             {% set i = i+1 %}
           {% endfor %}
@@ -166,27 +166,27 @@
 
 
    {# Game #}
-   <script src="{{ asset('bundles/johannatest/js/Game.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/Game.js') }}"></script>
 
   {# Models #}
-   <script src="{{ asset('bundles/johannatest/js/CompanionModel.js') }}"></script>
-   <script src="{{ asset('bundles/johannatest/js/WordModel.js') }}"></script>
-   <script src="{{ asset('bundles/johannatest/js/UserModel.js') }}"></script>
-   <script src="{{ asset('bundles/johannatest/js/LevelModel.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/CompanionModel.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/WordModel.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/UserModel.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/LevelModel.js') }}"></script>
 
    {# Views #}
-   <script src="{{ asset('bundles/johannatest/js/CompanionSelectionView.js') }}"></script>
-   <script src="{{ asset('bundles/johannatest/js/LevelSelectionView.js') }}"></script>
-   <script src="{{ asset('bundles/johannatest/js/PlayView.js') }}"></script>
-   <script src="{{ asset('bundles/johannatest/js/BerriesEatenView.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/CompanionSelectionView.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/LevelSelectionView.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/PlayView.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/BerriesEatenView.js') }}"></script>
 
    {# Manager #}
-   <script src="{{ asset('bundles/johannatest/js/SoundManager.js') }}"></script>
-   <script src="{{ asset('bundles/johannatest/js/AnimationManager.js') }}"></script>  
+   <script src="{{ asset('bundles/anlautfuchs/js/SoundManager.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/AnimationManager.js') }}"></script>  
 
    {# Controllers #}
-   <script src="{{ asset('bundles/johannatest/js/AjaxController.js') }}"></script>
-   <script src="{{ asset('bundles/johannatest/js/GameController.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/AjaxController.js') }}"></script>
+   <script src="{{ asset('bundles/anlautfuchs/js/GameController.js') }}"></script>
 
 
 

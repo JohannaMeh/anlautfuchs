@@ -1,6 +1,6 @@
 Game.PlayView = (function(){
     var that = {},
-    basisUrl = '/bundles/johannatest/',
+    basisUrl = '/bundles/anlautfuchs/',
     gameStarted = false,
 
     showImage = null,
