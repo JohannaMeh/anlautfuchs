@@ -7,6 +7,9 @@ Game.PlayView = (function(){
 
     currSelectedLevel = null,
 
+    useVisibility = false,
+    heightTreshold = 720,
+
     init = function() {
 
         $('#start-button').on('click', onStartButtonClicked);
@@ -21,7 +24,20 @@ Game.PlayView = (function(){
 
         $('#mini-level-select-button').on("click", selectLevel);
 
+        checkUseVisibility();
+
         return that;
+    },
+
+    checkUseVisibility = function(){
+        if($(window).height() < heightTreshold){
+            useVisibility = false;
+        }else{
+            useVisibility = true;
+        }
+
+        console.log("useVisibility: ", useVisibility);
+        console.log("window height: ", $(window).height());
     },
 
     hideView = function(){
@@ -87,7 +103,13 @@ Game.PlayView = (function(){
     prepareLevel = function(showSecondRow, newShowImage){
         $('.game-controls').css('visibility', 'hidden');
         $('#word-image').css('visibility','hidden');
-        $('#start-button').show();
+        
+
+        if(useVisibility){
+            $('#start-button').css('visibility', 'visible');
+        }else{
+            $('#start-button').show();
+        }
 
         if(showSecondRow){
             $('#wordrow-two').css('visibility','visible');
@@ -112,8 +134,12 @@ Game.PlayView = (function(){
 
     onStartButtonClicked = function(event){
         $('.game-controls').css('visibility', 'visible');
-        $('#start-button').hide();
 
+        if(useVisibility){
+            $('#start-button').css('visibility', 'hidden');
+        }else{
+            $('#start-button').hide();
+        }
 
         if(showImage){
             $('#word-image').css('visibility','visible');
