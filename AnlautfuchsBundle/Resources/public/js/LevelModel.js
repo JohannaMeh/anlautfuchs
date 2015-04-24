@@ -18,8 +18,15 @@ Game.LevelModel = (function(){
     levelFinished = false,
     firstGuess = true,
 
+    /* level */
+    alreadyFinishedOnce = false,
+    foxTypeUnlockable = null,
+
 
     init = function() {
+
+        alreadyFinishedOnce = false;
+        foxTypeUnlockable = null;
 
         return that;
     },
@@ -103,8 +110,6 @@ Game.LevelModel = (function(){
             parentId = undefined; 
         }
 
-
-
         for(var i = 0; i < json.word.length; i++){
             var wordModel = new Game.WordModel();
             wordModel.createFromJson(json.word[i]);
@@ -150,6 +155,28 @@ Game.LevelModel = (function(){
         for(var i = 0; i < words.length; i++){
             console.log('Word ',i,words[i].getWord());
         }
+    },
+
+
+    getFoxTypeUnlockable = function(){
+        return foxTypeUnlockable;
+    },
+
+    setFoxTypeUnlockable = function(foxType){
+        foxTypeUnlockable = foxType;
+    },
+
+    checkIfAlreadyFinished = function(levelList){
+        alreadyFinishedOnce = true;
+        for(var key in levelList){
+            if(nextLevelId == levelList[key]){
+                alreadyFinishedOnce = false;
+            }
+        }
+    },
+
+    wasAlreadyFinishedOnce = function(){
+        return alreadyFinishedOnce;
     };
     
 
@@ -168,6 +195,11 @@ Game.LevelModel = (function(){
     that.createFromJson = createFromJson;
 
     that.getParentId = getParentId;
+
+    that.getFoxTypeUnlockable = getFoxTypeUnlockable;
+    that.setFoxTypeUnlockable = setFoxTypeUnlockable;
+    that.checkIfAlreadyFinished = checkIfAlreadyFinished;
+    that.wasAlreadyFinishedOnce = wasAlreadyFinishedOnce;
 
     return that;
 });

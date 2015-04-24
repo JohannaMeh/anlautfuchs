@@ -132,12 +132,25 @@ Game.GameController = (function(){
 
     onLevelLoaded = function(event, level){
         levelModel = level;
+
+        //check if level was already finished or if it is the first try for the level
+        levelModel.checkIfAlreadyFinished(disabledLevelsJson);
+
+        //check if by finishing the level a fox type could be unlocked
+        checkForLevelFoxType();
+
         setLevelData(level);
 
         if(playViewLevelChange){
             playViewLevelChange = false;
             startNextLevel();
         }
+    },  
+
+    checkForLevelFoxType = function(){
+        var nextLevelId = levelModel.getNextLevelId();
+
+        levelModel.setFoxTypeUnlockable(companionModel.checkIfLevelUnlocksFoxType(nextLevelId));
     },
 
     onDisabledLevelsLoaded = function(event, json){
@@ -200,9 +213,6 @@ Game.GameController = (function(){
         //if there is disabled level data set, use it
         if(disabledLevelsJson != null){
             companionModel.setDisabledLevels(disabledLevelsJson);
-
-            //remove the data, which is no more needed
-            disabledLevelsJson = null;
         }
     },
 
@@ -225,8 +235,20 @@ Game.GameController = (function(){
                 // check if game finished
                 var finished = levelModel.isLevelFinished();
                 if(finished){
-                    // show nomnom screen, play finish sound
-                    soundManager.toggleFinishLevelSound();
+                    // check if level is finished for the first time and unlocks an fox Type
+                    if(!levelModel.wasAlreadyFinishedOnce() && levelModel.getFoxTypeUnlockable() != null){
+                        //play sound with type unlocking stuff
+                        soundManager.toggleSpecialFinishLevelSound();
+                        //show unlocked skin
+                        
+                        playView.showFoxUnlockedPopup(levelModel.getFoxTypeUnlockable());
+                    }else{
+                        //play normal finish sound
+                        soundManager.toggleFinishLevelSound();
+
+                        // show nomnom screen or sth. like that?
+                        playView.showLevelFinishedPopup();
+                    }
 
                     userModel.setBerriesEaten(userModel.getBerriesEaten() + 1);
                     playView.setBerriesEaten(userModel.getBerriesEaten());

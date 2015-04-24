@@ -98,17 +98,30 @@ Game.SoundManager = (function(){
     },*/
 
     toggleFinishLevelSound = function(){
-        /*if(Math.random()<0.5){
-            finishLevelSoundEl.play();
-        }else{
-            finishLevelSoundEl2.play();
-        }*/
-
         if(soundPlaying){
             stopAllSounds();
         }else{
             var sound = new Howl({
                 urls: [finishLevelSoundUrl],
+                onend: stopListener,
+                onpause: stopListener
+            });
+
+            currentHowl = sound;
+
+            sound.play();
+            soundPlaying = true;
+            $(that).trigger('soundStarted');
+        }
+    },
+
+
+    toggleSpecialFinishLevelSound = function(){
+        if(soundPlaying){
+            stopAllSounds();
+        }else{
+            var sound = new Howl({
+                urls: [finishLevelSoundUrl2],
                 onend: stopListener,
                 onpause: stopListener
             });
@@ -221,6 +234,8 @@ Game.SoundManager = (function(){
     that.toggleFailureSound = toggleFailureSound;*/
 
     that.toggleFinishLevelSound = toggleFinishLevelSound;
+
+    that.toggleSpecialFinishLevelSound = toggleSpecialFinishLevelSound;
 
     that.toggleChoseLevelSound = toggleChoseLevelSound;
     that.toggleChoseCompanionSound = toggleChoseCompanionSound;

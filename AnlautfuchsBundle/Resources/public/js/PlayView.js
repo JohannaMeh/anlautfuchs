@@ -243,6 +243,16 @@ Game.PlayView = (function(){
     setBerriesEaten = function(berriesEaten){
         var berriesEatenText = 'x' + berriesEaten;
         $('#berries-eaten-sign > span').text(berriesEatenText);
+    },
+
+
+    showFoxUnlockedPopup = function(foxType){
+        console.log("Yaaaay unlocked: ", foxType);
+    },
+
+
+    showLevelFinishedPopup = function(){
+        console.log("Yaaaay level finished :)");
     };
 
     that.init = init;
@@ -259,6 +269,10 @@ Game.PlayView = (function(){
     that.markCurrentLevel = markCurrentLevel;
 
     that.setBerriesEaten = setBerriesEaten;
+
+    that.showFoxUnlockedPopup = showFoxUnlockedPopup;
+
+    that.showLevelFinishedPopup = showLevelFinishedPopup;
 
     return that;
 })();

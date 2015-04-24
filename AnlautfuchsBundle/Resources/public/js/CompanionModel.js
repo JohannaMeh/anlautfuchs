@@ -96,6 +96,15 @@ Game.CompanionModel = (function(){
         }
 
         return true;
+    },
+
+    checkIfLevelUnlocksFoxType = function(levelId){
+        for(var i = 0; i < neededLevelIds.length; i++){
+            if(levelId == neededLevelIds[i]){
+                return types[i];
+            }
+        }
+        return null;
     };
 
     that.init = init;
@@ -103,6 +112,7 @@ Game.CompanionModel = (function(){
     that.getPrev = getPrev;
     that.createFromJson = createFromJson;
     that.setDisabledLevels = setDisabledLevels;
+    that.checkIfLevelUnlocksFoxType = checkIfLevelUnlocksFoxType;
 
     return that;
 })();
