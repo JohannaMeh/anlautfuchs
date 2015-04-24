@@ -22,4 +22,14 @@ AnlautfuchsBundle\Entity\Companion:
             nullable: false
             unsigned: false
             comment: ''
+    manyToOne:
+        neededLevelId:
+            targetEntity: Levels
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                needed_level_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Johanna\TestBundle\Entity;
+namespace AnlautfuchsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -36,9 +36,9 @@ class Users
     private $password;
 
     /**
-     * @var \Johanna\TestBundle\Entity\Companion
+     * @var \AnlautfuchsBundle\Entity\Companion
      *
-     * @ORM\ManyToOne(targetEntity="Johanna\TestBundle\Entity\Companion")
+     * @ORM\ManyToOne(targetEntity="AnlautfuchsBundle\Entity\Companion")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_companion_id", referencedColumnName="id")
      * })
@@ -46,9 +46,9 @@ class Users
     private $userCompanion;
 
     /**
-     * @var \Johanna\TestBundle\Entity\Levels
+     * @var \AnlautfuchsBundle\Entity\Levels
      *
-     * @ORM\ManyToOne(targetEntity="Johanna\TestBundle\Entity\Levels")
+     * @ORM\ManyToOne(targetEntity="AnlautfuchsBundle\Entity\Levels")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="current_level_id", referencedColumnName="id")
      * })
@@ -116,10 +116,10 @@ class Users
     /**
      * Set userCompanion
      *
-     * @param \Johanna\TestBundle\Entity\Companion $userCompanion
+     * @param \AnlautfuchsBundle\Entity\Companion $userCompanion
      * @return Users
      */
-    public function setUserCompanion(\Johanna\TestBundle\Entity\Companion $userCompanion = null)
+    public function setUserCompanion(\AnlautfuchsBundle\Entity\Companion $userCompanion = null)
     {
         $this->userCompanion = $userCompanion;
 
@@ -129,7 +129,7 @@ class Users
     /**
      * Get userCompanion
      *
-     * @return \Johanna\TestBundle\Entity\Companion 
+     * @return \AnlautfuchsBundle\Entity\Companion 
      */
     public function getUserCompanion()
     {
@@ -139,10 +139,10 @@ class Users
     /**
      * Set currentLevel
      *
-     * @param \Johanna\TestBundle\Entity\Levels $currentLevel
+     * @param \AnlautfuchsBundle\Entity\Levels $currentLevel
      * @return Users
      */
-    public function setCurrentLevel(\Johanna\TestBundle\Entity\Levels $currentLevel = null)
+    public function setCurrentLevel(\AnlautfuchsBundle\Entity\Levels $currentLevel = null)
     {
         $this->currentLevel = $currentLevel;
 
@@ -152,7 +152,7 @@ class Users
     /**
      * Get currentLevel
      *
-     * @return \Johanna\TestBundle\Entity\Levels 
+     * @return \AnlautfuchsBundle\Entity\Levels 
      */
     public function getCurrentLevel()
     {

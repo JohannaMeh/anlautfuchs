@@ -24,6 +24,9 @@ Game.GameController = (function(){
     levelFinished = false,
     playViewLevelChange = false,
 
+
+    disabledLevelsJson = null,
+
     init = function() {
         ajaxController = Game.AjaxController.init();
 
@@ -140,6 +143,14 @@ Game.GameController = (function(){
     onDisabledLevelsLoaded = function(event, json){
         levelSelectionView.disableLevels(json);
         playView.disableLevels(json);
+
+        //if it is already here use the companion model
+        if(companionModel){
+            companionModel.setDisabledLevels(json);
+        }else{
+            //if not save the json and set it later
+            disabledLevelsJson = json;
+        }
     },
 
     setLevelData = function(level){
@@ -185,6 +196,14 @@ Game.GameController = (function(){
 
     onCompanionsLoaded = function(event, companions){
         companionModel = companions;
+
+        //if there is disabled level data set, use it
+        if(disabledLevelsJson != null){
+            companionModel.setDisabledLevels(disabledLevelsJson);
+
+            //remove the data, which is no more needed
+            disabledLevelsJson = null;
+        }
     },
 
     onCharClicked = function(event, character){

@@ -1,6 +1,6 @@
 <?php
 
-namespace Johanna\TestBundle\Entity;
+namespace AnlautfuchsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -138,10 +138,10 @@ class Words
     /**
      * Add level
      *
-     * @param \Johanna\TestBundle\Entity\Levels $level
+     * @param \AnlautfuchsBundle\Entity\Levels $level
      * @return Words
      */
-    public function addLevel(\Johanna\TestBundle\Entity\Levels $level)
+    public function addLevel(\AnlautfuchsBundle\Entity\Levels $level)
     {
         $this->level[] = $level;
 
@@ -151,9 +151,9 @@ class Words
     /**
      * Remove level
      *
-     * @param \Johanna\TestBundle\Entity\Levels $level
+     * @param \AnlautfuchsBundle\Entity\Levels $level
      */
-    public function removeLevel(\Johanna\TestBundle\Entity\Levels $level)
+    public function removeLevel(\AnlautfuchsBundle\Entity\Levels $level)
     {
         $this->level->removeElement($level);
     }

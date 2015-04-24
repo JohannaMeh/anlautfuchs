@@ -118,4 +118,32 @@ class Companion
     {
         return $this->sorting;
     }
+    /**
+     * @var \AnlautfuchsBundle\Entity\Levels
+     */
+    private $neededLevelId;
+
+
+    /**
+     * Set neededLevelId
+     *
+     * @param \AnlautfuchsBundle\Entity\Levels $neededLevelId
+     * @return Companion
+     */
+    public function setNeededLevelId(\AnlautfuchsBundle\Entity\Levels $neededLevelId = null)
+    {
+        $this->neededLevelId = $neededLevelId;
+
+        return $this;
+    }
+
+    /**
+     * Get neededLevelId
+     *
+     * @return \AnlautfuchsBundle\Entity\Levels 
+     */
+    public function getNeededLevelId()
+    {
+        return $this->neededLevelId;
+    }
 }

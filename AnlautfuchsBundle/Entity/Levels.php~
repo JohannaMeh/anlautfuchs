@@ -1,6 +1,6 @@
 <?php
 
-namespace Johanna\TestBundle\Entity;
+namespace AnlautfuchsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -126,10 +126,10 @@ class Levels
     /**
      * Add words
      *
-     * @param \Johanna\TestBundle\Entity\Words $words
+     * @param \AnlautfuchsBundle\Entity\Words $words
      * @return Levels
      */
-    public function addWord(\Johanna\TestBundle\Entity\Words $words)
+    public function addWord(\AnlautfuchsBundle\Entity\Words $words)
     {
         $this->words[] = $words;
 
@@ -139,9 +139,9 @@ class Levels
     /**
      * Remove words
      *
-     * @param \Johanna\TestBundle\Entity\Words $words
+     * @param \AnlautfuchsBundle\Entity\Words $words
      */
-    public function removeWord(\Johanna\TestBundle\Entity\Words $words)
+    public function removeWord(\AnlautfuchsBundle\Entity\Words $words)
     {
         $this->words->removeElement($words);
     }
@@ -156,7 +156,7 @@ class Levels
         return $this->words;
     }
     /**
-     * @var \Johanna\TestBundle\Entity\Levels
+     * @var \AnlautfuchsBundle\Entity\Levels
      */
     private $parentLevel;
 
@@ -169,10 +169,10 @@ class Levels
     /**
      * Set parentLevel
      *
-     * @param \Johanna\TestBundle\Entity\Levels $parentLevel
+     * @param \AnlautfuchsBundle\Entity\Levels $parentLevel
      * @return Levels
      */
-    public function setParentLevel(\Johanna\TestBundle\Entity\Levels $parentLevel = null)
+    public function setParentLevel(\AnlautfuchsBundle\Entity\Levels $parentLevel = null)
     {
         $this->parentLevel = $parentLevel;
 
@@ -182,7 +182,7 @@ class Levels
     /**
      * Get parentLevel
      *
-     * @return \Johanna\TestBundle\Entity\Levels 
+     * @return \AnlautfuchsBundle\Entity\Levels 
      */
     public function getParentLevel()
     {
@@ -322,5 +322,33 @@ class Levels
     public function getSorting()
     {
         return $this->sorting;
+    }
+    /**
+     * @var string
+     */
+    private $cssClass;
+
+
+    /**
+     * Set cssClass
+     *
+     * @param string $cssClass
+     * @return Levels
+     */
+    public function setCssClass($cssClass)
+    {
+        $this->cssClass = $cssClass;
+
+        return $this;
+    }
+
+    /**
+     * Get cssClass
+     *
+     * @return string 
+     */
+    public function getCssClass()
+    {
+        return $this->cssClass;
     }
 }
