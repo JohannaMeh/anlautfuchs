@@ -248,11 +248,33 @@ Game.PlayView = (function(){
 
     showFoxUnlockedPopup = function(foxType){
         console.log("Yaaaay unlocked: ", foxType);
+
+        //remove all classes
+        $("#unlocked-type").removeClass();
+
+        $("#unlocked-type").addClass("type-"+foxType);
+
+        //show the normal popup first
+        showLevelFinishedPopup();
+
+        //after 3500 seconds show new skin
+        setTimeout(function(){
+            $("#level-finished-popup").fadeOut();
+            $("#type-unlocked-popup").fadeIn();
+        }, 3800);
     },
 
 
     showLevelFinishedPopup = function(){
         console.log("Yaaaay level finished :)");
+
+        $("#level-finished-popup").fadeIn();
+    },
+
+
+    hidePopups = function(){
+        $("#type-unlocked-popup").fadeOut();
+        $("#level-finished-popup").fadeOut();
     };
 
     that.init = init;
@@ -273,6 +295,8 @@ Game.PlayView = (function(){
     that.showFoxUnlockedPopup = showFoxUnlockedPopup;
 
     that.showLevelFinishedPopup = showLevelFinishedPopup;
+
+    that.hidePopups = hidePopups;
 
     return that;
 })();

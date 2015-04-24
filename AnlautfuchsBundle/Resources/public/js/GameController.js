@@ -312,6 +312,7 @@ Game.GameController = (function(){
 
         //should be finished level sound
         if(levelFinished){
+            playView.hidePopups();
             setTimeout(startNextLevel, 500);
         }
     },
