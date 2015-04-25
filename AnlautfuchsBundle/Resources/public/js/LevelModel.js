@@ -164,6 +164,7 @@ Game.LevelModel = (function(){
 
     setFoxTypeUnlockable = function(foxType){
         foxTypeUnlockable = foxType;
+        console.log("FoxType set: ", foxType);
     },
 
     checkIfAlreadyFinished = function(levelList){
@@ -173,6 +174,7 @@ Game.LevelModel = (function(){
                 alreadyFinishedOnce = false;
             }
         }
+        console.log("Level was already finished Once: ", alreadyFinishedOnce);
     },
 
     wasAlreadyFinishedOnce = function(){

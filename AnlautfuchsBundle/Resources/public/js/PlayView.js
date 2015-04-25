@@ -261,14 +261,27 @@ Game.PlayView = (function(){
         setTimeout(function(){
             $("#level-finished-popup").fadeOut();
             $("#type-unlocked-popup").fadeIn();
+            setTimeout(function(){
+                $("#type-unlocked-popup").fadeOut();
+            }, 4500);
         }, 3800);
     },
 
 
-    showLevelFinishedPopup = function(){
+    showLevelFinishedPopup = function(hideAfterTimeout){
+        if(hideAfterTimeout == undefined){
+            hideAfterTimeout = true;
+        }
+
         console.log("Yaaaay level finished :)");
 
         $("#level-finished-popup").fadeIn();
+
+        if(hideAfterTimeout){
+            setTimeout(function(){
+                $("#level-finished-popup").fadeOut();
+            }, 4500);
+        }
     },
 
 
