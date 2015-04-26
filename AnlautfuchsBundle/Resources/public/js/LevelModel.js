@@ -5,6 +5,8 @@ Game.LevelModel = (function(){
     name = null,
     showImage = null, /* boolean */
     showSecondRow = null, /* boolean */
+    wordSound = null, /* boolean */
+    imageOptional = null, /* boolean */
     words = [], /* array */
 
     nextLevelId = null,
@@ -84,6 +86,14 @@ Game.LevelModel = (function(){
         return id;
     },
 
+    getWordSound = function(){
+        return wordSound;
+    },
+
+    getImageOptional = function(){
+        return imageOptional;
+    },
+
     getExplanationSound = function(){
         return explanationSound;
     },
@@ -103,6 +113,9 @@ Game.LevelModel = (function(){
         showSecondRow = json.second_row;
         nextLevelId = json.next_level;
         explanationSound = json.explanation_sound;
+
+        wordSound = json.word_sound;
+        imageOptional = json.image_optional;
 
         if(json.parent_level){
             parentId = json.parent_level.id;

@@ -351,4 +351,60 @@ class Levels
     {
         return $this->cssClass;
     }
+    /**
+     * @var boolean
+     */
+    private $wordSound;
+
+    /**
+     * @var boolean
+     */
+    private $imageOptional;
+
+
+    /**
+     * Set wordSound
+     *
+     * @param boolean $wordSound
+     * @return Levels
+     */
+    public function setWordSound($wordSound)
+    {
+        $this->wordSound = $wordSound;
+
+        return $this;
+    }
+
+    /**
+     * Get wordSound
+     *
+     * @return boolean 
+     */
+    public function getWordSound()
+    {
+        return $this->wordSound;
+    }
+
+    /**
+     * Set imageOptional
+     *
+     * @param boolean $imageOptional
+     * @return Levels
+     */
+    public function setImageOptional($imageOptional)
+    {
+        $this->imageOptional = $imageOptional;
+
+        return $this;
+    }
+
+    /**
+     * Get imageOptional
+     *
+     * @return boolean 
+     */
+    public function getImageOptional()
+    {
+        return $this->imageOptional;
+    }
 }

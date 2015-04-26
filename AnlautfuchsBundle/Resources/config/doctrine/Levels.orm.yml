@@ -56,6 +56,16 @@ AnlautfuchsBundle\Entity\Levels:
             fixed: false
             comment: ''
             column: css_class
+        wordSound:
+            type: boolean
+            nullable: false
+            comment: ''
+            column: word_sound
+        imageOptional:
+            type: boolean
+            nullable: false
+            comment: ''
+            column: image_optional
     manyToOne:
         parentLevel:
             targetEntity: Levels
