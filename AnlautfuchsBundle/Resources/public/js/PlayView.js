@@ -4,6 +4,7 @@ Game.PlayView = (function(){
     gameStarted = false,
 
     showImage = null,
+    wordSound = null,
 
     currSelectedLevel = null,
 
@@ -100,9 +101,10 @@ Game.PlayView = (function(){
 
     },
 
-    prepareLevel = function(showSecondRow, newShowImage){
+    prepareLevel = function(showSecondRow, newShowImage, newWordSound){
         $('.game-controls').css('visibility', 'hidden');
         $('#word-image').css('visibility','hidden');
+        $('#sound-button').css('visibility','hidden');
         
 
         if(useVisibility){
@@ -117,7 +119,9 @@ Game.PlayView = (function(){
             $('#wordrow-two').css('visibility','hidden');
         }
 
+
         showImage = newShowImage;
+        wordSound = newWordSound;
 
         gameStarted = false;
     },
@@ -143,6 +147,10 @@ Game.PlayView = (function(){
 
         if(showImage){
             $('#word-image').css('visibility','visible');
+        }
+
+        if(wordSound){
+            $('#sound-button').css('visibility','visible');
         }
 
         gameStarted = true;

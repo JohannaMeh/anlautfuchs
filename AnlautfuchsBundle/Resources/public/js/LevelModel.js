@@ -215,6 +215,8 @@ Game.LevelModel = (function(){
     that.setFoxTypeUnlockable = setFoxTypeUnlockable;
     that.checkIfAlreadyFinished = checkIfAlreadyFinished;
     that.wasAlreadyFinishedOnce = wasAlreadyFinishedOnce;
+    that.getWordSound = getWordSound;
+    that.getImageOptional = getImageOptional;
 
     return that;
 });

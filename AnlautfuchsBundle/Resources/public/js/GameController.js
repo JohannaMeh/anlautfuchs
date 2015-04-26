@@ -171,7 +171,7 @@ Game.GameController = (function(){
         playView.markCurrentLevel(level.getId(), level.getParentId());
 
         // set view data
-        playView.prepareLevel(level.showSecondRow(), level.showImage());
+        playView.prepareLevel(level.showSecondRow(), level.showImage(), level.getWordSound());
         playView.setWordImage(level.getCurrentWord().getImage());
 
 
@@ -287,8 +287,10 @@ Game.GameController = (function(){
         //set image after 1.5 secs
         playView.setWordImage(nextWord.getImage());
 
-        //play sound after 1.5 secs
-        soundManager.playWordSound();
+        if(levelModel.getWordSound()){
+            //play sound after 1.5 secs
+            soundManager.playWordSound();
+        }
     }
 
     onWordSoundButtonClicked = function(event){
@@ -297,7 +299,10 @@ Game.GameController = (function(){
 
     onStartButtonClicked = function(event){
         soundManager.stopAllSounds();
-        setTimeout(soundManager.playWordSound, 500);
+
+        if(levelModel.getWordSound()){
+            setTimeout(soundManager.playWordSound, 500);
+        }
     },
 
     onSoundStart = function(event){
