@@ -149,8 +149,9 @@ Game.GameController = (function(){
 
     checkForLevelFoxType = function(){
         var nextLevelId = levelModel.getNextLevelId();
-
-        levelModel.setFoxTypeUnlockable(companionModel.checkIfLevelUnlocksFoxType(nextLevelId));
+        if(companionModel){
+            levelModel.setFoxTypeUnlockable(companionModel.checkIfLevelUnlocksFoxType(nextLevelId));
+        }
     },
 
     onDisabledLevelsLoaded = function(event, json){
@@ -172,7 +173,7 @@ Game.GameController = (function(){
 
         // set view data
         playView.prepareLevel(level.showSecondRow(), level.showImage(), level.getWordSound());
-        playView.setWordImage(level.getCurrentWord().getImage());
+        playView.setWordImage(level.getCurrentWord().getImage(), levelModel.getImageOptional());
 
 
         //set sound data
@@ -285,7 +286,7 @@ Game.GameController = (function(){
         soundManager.setWordSound(nextWord.getSound());
 
         //set image after 1.5 secs
-        playView.setWordImage(nextWord.getImage());
+        playView.setWordImage(nextWord.getImage(), levelModel.getImageOptional());
 
         if(levelModel.getWordSound()){
             //play sound after 1.5 secs

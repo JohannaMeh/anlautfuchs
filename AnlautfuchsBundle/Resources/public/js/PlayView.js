@@ -8,6 +8,8 @@ Game.PlayView = (function(){
 
     currSelectedLevel = null,
 
+    currentImage = null,
+
     useVisibility = false,
     heightTreshold = 720,
 
@@ -24,6 +26,8 @@ Game.PlayView = (function(){
         $('.mini-level-selection > ul li').on("click", levelSelectionChange);
 
         $('#mini-level-select-button').on("click", selectLevel);
+
+        $("#word-image").on('click', onWordImageClicked);
 
         checkUseVisibility();
 
@@ -88,17 +92,22 @@ Game.PlayView = (function(){
         $('.character-box.incorrect').removeClass('incorrect');
     },
 
-    setWordImage = function(image){
-        console.log('set current word', image);
-        //set image
-        if(!$('#word-image').hasClass('real-image')){
-            $('#word-image').addClass('real-image');            
+    setWordImage = function(image, imageOptional){
+
+        currentImage = image;
+        console.log('set current wordimage', image);
+
+        if(!imageOptional){
+            //set image
+            if(!$('#word-image').hasClass('real-image')){
+                $('#word-image').addClass('real-image');            
+            }
+
+            $('#word-image').css('background-image', "url("+basisUrl+image+")");
+        }else{
+            $('#word-image').removeClass('real-image');
+            $('#word-image').css('background-image', "url("+basisUrl+"data/img/UI/ui_elements_2.png)");
         }
-
-        $('#word-image').css('background-image', "url("+basisUrl+image+")");
-
-        //set sound
-
     },
 
     prepareLevel = function(showSecondRow, newShowImage, newWordSound){
@@ -129,6 +138,13 @@ Game.PlayView = (function(){
     onSoundButtonClicked = function(event){
         if(gameStarted){
             $(that).trigger('onWordSoundButtonClicked');
+        }
+    },
+
+    onWordImageClicked = function(event){
+        if(!$('#word-image').hasClass('real-image')){
+            $('#word-image').addClass('real-image');
+            $('#word-image').css('background-image', "url("+basisUrl+currentImage+")");  
         }
     },
 

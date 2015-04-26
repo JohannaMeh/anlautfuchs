@@ -849,9 +849,7 @@ div.level-selection > ul li.selected {
     width: 180px;
     background-position: 0 0;
     float: left;
-    margin-left: 30px;
 }
-
 
 @media (max-width: 1380px){
     #word-image {
@@ -869,6 +867,7 @@ div.level-selection > ul li.selected {
     border-width: 4px;
     padding: 5px;
     margin-top: 15px;
+    margin-left: 30px;
 }
 
 #tree {
