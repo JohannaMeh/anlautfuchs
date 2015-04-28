@@ -109,9 +109,16 @@
 
       $('#credits-button').on('click', toggleCredits);
 
+      $('body').on('click', hideCredits);
 
-      function toggleCredits(){
+
+      function toggleCredits(e){
           $('#credits').toggleClass('visible');
+          e.stopPropagation();
+      }
+
+      function hideCredits(){
+        $('#credits').removeClass('visible');
       }
 
     });
