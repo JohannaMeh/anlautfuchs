@@ -2,6 +2,7 @@
 {% block body %}
 <div class="login-container">
   <div class="col-md-3">
+    <div id="credits-button"></div>
   </div>
   <div class="col-md-6 text-center login-container">
     <form method="POST" class="form-signin">
@@ -20,6 +21,25 @@
   <div class="col-md-3">
       <div class="thought-bubble hungry"></div>
       <div class="companion"></div>
+  </div>
+</div>
+
+
+<div id="popups">
+  <div id="credits" class="popup">
+    <p class="inner">
+      CREDITS<br/>
+      ***<br/>
+      Design und Umsetzung:<br/>
+      Dorina Fischbach<br/>
+      Johanna Mühlenfeld<br/>
+<br/>
+      Synchronsprecher: Begriffe<br/>
+      Maximilian Falk<br/>
+<br/>
+      Synchronsprecher: Kassettenrekorder<br/>
+      Annette Schmidt<br/>
+    </p>
   </div>
 </div>
 {% endblock %}
@@ -63,7 +83,7 @@
       });
 
 
-    $('.tape-recorder').on('click', soundManager.toggleLoginSound);
+      $('.tape-recorder').on('click', soundManager.toggleLoginSound);
 
       $('#back-button').hide();
       $('#logout-button').hide();
@@ -84,6 +104,16 @@
         animationManager.resetCompanionFeeling();
         setTimeout(setHungry, 6000);
       }
+
+      /* credits */
+
+      $('#credits-button').on('click', toggleCredits);
+
+
+      function toggleCredits(){
+          $('#credits').toggleClass('visible');
+      }
+
     });
 
   </script>

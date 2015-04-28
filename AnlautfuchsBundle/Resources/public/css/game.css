@@ -1313,3 +1313,39 @@ div.mini-level-selection > ul li.selected {
 .type-cowboy {
     background: url(../data/img/UI/type_cowboy.png) scroll 0 0 / 100% auto;
 }
+
+
+/* credits popup */
+#credits {
+    width: 850px;
+    height: 625px;
+    top: 15%;
+    left: 27.5%;
+}
+
+#credits .inner {
+    text-align: center;
+    font-size: 30px;
+    padding: 70px;
+}
+
+#credits.visible {
+    display: block;
+}
+
+#credits-button {
+    background: url("../data/img/UI/ok.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 100px;
+    text-align: center;
+    width: 100px;
+    border: none;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 20px;
+    left: 60px;
+}
+
+#credits-button:hover{
+    background: url("../data/img/UI/ok.png") no-repeat scroll -100px 0 rgba(0, 0, 0, 0);
+}
