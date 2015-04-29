@@ -802,6 +802,10 @@ div.level-selection > ul li.selected {
     cursor: pointer;
 }
 
+#start-button:hover {
+    background: url("../data/img/UI/start.png") no-repeat scroll 0 -125px rgba(0, 0, 0, 0);
+}
+
 @media (max-width: 1380px){
     #start-button {
         zoom: 0.8;
@@ -1334,11 +1338,11 @@ div.mini-level-selection > ul li.selected {
 }
 
 #credits-button {
-    background: url("../data/img/UI/ok.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../data/img/UI/credits.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     cursor: pointer;
     height: 100px;
     text-align: center;
-    width: 100px;
+    width: 210px;
     border: none;
     margin: 0 auto;
     position: fixed;
@@ -1346,6 +1350,6 @@ div.mini-level-selection > ul li.selected {
     left: 60px;
 }
 
-#credits-button:hover{
-    background: url("../data/img/UI/ok.png") no-repeat scroll -100px 0 rgba(0, 0, 0, 0);
+#credits-button:hover {
+    background: url("../data/img/UI/credits.png") no-repeat scroll 0 -100px rgba(0, 0, 0, 0);
 }
