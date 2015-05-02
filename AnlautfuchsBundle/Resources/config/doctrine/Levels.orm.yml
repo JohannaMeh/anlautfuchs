@@ -77,11 +77,11 @@ AnlautfuchsBundle\Entity\Levels:
                     referencedColumnName: id
             orphanRemoval: false
     manyToMany:
-        word:
+        words:
             targetEntity: Words
             cascade: {  }
             mappedBy: null
-            inversedBy: level
+            inversedBy: null
             joinTable:
                 name: words_for_level
                 joinColumns:

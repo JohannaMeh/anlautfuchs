@@ -123,9 +123,9 @@ Game.LevelModel = (function(){
             parentId = undefined; 
         }
 
-        for(var i = 0; i < json.word.length; i++){
+        for(var i = 0; i < json.words.length; i++){
             var wordModel = new Game.WordModel();
-            wordModel.createFromJson(json.word[i]);
+            wordModel.createFromJson(json.words[i]);
             words[i] = wordModel;
         }
 

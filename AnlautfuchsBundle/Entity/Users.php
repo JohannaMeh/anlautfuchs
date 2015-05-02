@@ -6,55 +6,38 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Users
- *
- * @ORM\Table(name="users", indexes={@ORM\Index(name="current_level_id", columns={"current_level_id"}), @ORM\Index(name="user_companion", columns={"user_companion_id"})})
- * @ORM\Entity
  */
 class Users
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=50, nullable=false)
      */
     private $name;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=100, nullable=false)
      */
     private $password;
 
     /**
-     * @var \AnlautfuchsBundle\Entity\Companion
-     *
-     * @ORM\ManyToOne(targetEntity="AnlautfuchsBundle\Entity\Companion")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_companion_id", referencedColumnName="id")
-     * })
+     * @var integer
      */
-    private $userCompanion;
+    private $berriesEaten;
 
     /**
      * @var \AnlautfuchsBundle\Entity\Levels
-     *
-     * @ORM\ManyToOne(targetEntity="AnlautfuchsBundle\Entity\Levels")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="current_level_id", referencedColumnName="id")
-     * })
      */
     private $currentLevel;
 
+    /**
+     * @var \AnlautfuchsBundle\Entity\Companion
+     */
+    private $userCompanion;
 
 
     /**
@@ -114,26 +97,26 @@ class Users
     }
 
     /**
-     * Set userCompanion
+     * Set berriesEaten
      *
-     * @param \AnlautfuchsBundle\Entity\Companion $userCompanion
+     * @param integer $berriesEaten
      * @return Users
      */
-    public function setUserCompanion(\AnlautfuchsBundle\Entity\Companion $userCompanion = null)
+    public function setBerriesEaten($berriesEaten)
     {
-        $this->userCompanion = $userCompanion;
+        $this->berriesEaten = $berriesEaten;
 
         return $this;
     }
 
     /**
-     * Get userCompanion
+     * Get berriesEaten
      *
-     * @return \AnlautfuchsBundle\Entity\Companion 
+     * @return integer 
      */
-    public function getUserCompanion()
+    public function getBerriesEaten()
     {
-        return $this->userCompanion;
+        return $this->berriesEaten;
     }
 
     /**
@@ -160,31 +143,25 @@ class Users
     }
 
     /**
-     * @var integer
-     */
-    private $berriesEaten;
-
-
-    /**
-     * Set berriesEaten
+     * Set userCompanion
      *
-     * @param integer $berriesEaten
+     * @param \AnlautfuchsBundle\Entity\Companion $userCompanion
      * @return Users
      */
-    public function setBerriesEaten($berriesEaten)
+    public function setUserCompanion(\AnlautfuchsBundle\Entity\Companion $userCompanion = null)
     {
-        $this->berriesEaten = $berriesEaten;
+        $this->userCompanion = $userCompanion;
 
         return $this;
     }
 
     /**
-     * Get berriesEaten
+     * Get userCompanion
      *
-     * @return integer 
+     * @return \AnlautfuchsBundle\Entity\Companion 
      */
-    public function getBerriesEaten()
+    public function getUserCompanion()
     {
-        return $this->berriesEaten;
+        return $this->userCompanion;
     }
 }

@@ -4,7 +4,6 @@ namespace AnlautfuchsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * Levels
  */
@@ -29,6 +28,41 @@ class Levels
      * @var boolean
      */
     private $secondRow;
+
+    /**
+     * @var integer
+     */
+    private $nextLevel;
+
+    /**
+     * @var string
+     */
+    private $explanationSound;
+
+    /**
+     * @var integer
+     */
+    private $sorting;
+
+    /**
+     * @var string
+     */
+    private $cssClass;
+
+    /**
+     * @var boolean
+     */
+    private $wordSound;
+
+    /**
+     * @var boolean
+     */
+    private $imageOptional;
+
+    /**
+     * @var \AnlautfuchsBundle\Entity\Levels
+     */
+    private $parentLevel;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -103,7 +137,7 @@ class Levels
     /**
      * Set secondRow
      *
-     * @param integer $secondRow
+     * @param boolean $secondRow
      * @return Levels
      */
     public function setSecondRow($secondRow)
@@ -116,106 +150,12 @@ class Levels
     /**
      * Get secondRow
      *
-     * @return integer 
+     * @return boolean 
      */
     public function getSecondRow()
     {
         return $this->secondRow;
     }
-
-    /**
-     * Add words
-     *
-     * @param \AnlautfuchsBundle\Entity\Words $words
-     * @return Levels
-     */
-    public function addWord(\AnlautfuchsBundle\Entity\Words $words)
-    {
-        $this->words[] = $words;
-
-        return $this;
-    }
-
-    /**
-     * Remove words
-     *
-     * @param \AnlautfuchsBundle\Entity\Words $words
-     */
-    public function removeWord(\AnlautfuchsBundle\Entity\Words $words)
-    {
-        $this->words->removeElement($words);
-    }
-
-    /**
-     * Get words
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getWords()
-    {
-        return $this->words;
-    }
-    /**
-     * @var \AnlautfuchsBundle\Entity\Levels
-     */
-    private $parentLevel;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $word;
-
-
-    /**
-     * Set parentLevel
-     *
-     * @param \AnlautfuchsBundle\Entity\Levels $parentLevel
-     * @return Levels
-     */
-    public function setParentLevel(\AnlautfuchsBundle\Entity\Levels $parentLevel = null)
-    {
-        $this->parentLevel = $parentLevel;
-
-        return $this;
-    }
-
-    /**
-     * Get parentLevel
-     *
-     * @return \AnlautfuchsBundle\Entity\Levels 
-     */
-    public function getParentLevel()
-    {
-        return $this->parentLevel;
-    }
-
-    /**
-     * Get word
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getWord()
-    {
-        return $this->word;
-    }
-
-
-    private $children;
-
-    public function getChildren(){
-        return $this->children;
-    }
-
-    public function setChildren($children){
-        $this->children = $children;
-
-        return $this;
-    }
-    /**
-     * @var integer
-     */
-    private $nextLevel;
-
 
     /**
      * Set nextLevel
@@ -239,39 +179,6 @@ class Levels
     {
         return $this->nextLevel;
     }
-    /**
-     * @var string
-     */
-    private $levelSound;
-
-
-    /**
-     * Set levelSound
-     *
-     * @param string $levelSound
-     * @return Levels
-     */
-    public function setLevelSound($levelSound)
-    {
-        $this->levelSound = $levelSound;
-
-        return $this;
-    }
-
-    /**
-     * Get levelSound
-     *
-     * @return string 
-     */
-    public function getLevelSound()
-    {
-        return $this->levelSound;
-    }
-    /**
-     * @var string
-     */
-    private $explanationSound;
-
 
     /**
      * Set explanationSound
@@ -295,11 +202,6 @@ class Levels
     {
         return $this->explanationSound;
     }
-    /**
-     * @var integer
-     */
-    private $sorting;
-
 
     /**
      * Set sorting
@@ -323,11 +225,6 @@ class Levels
     {
         return $this->sorting;
     }
-    /**
-     * @var string
-     */
-    private $cssClass;
-
 
     /**
      * Set cssClass
@@ -351,16 +248,6 @@ class Levels
     {
         return $this->cssClass;
     }
-    /**
-     * @var boolean
-     */
-    private $wordSound;
-
-    /**
-     * @var boolean
-     */
-    private $imageOptional;
-
 
     /**
      * Set wordSound
@@ -406,5 +293,74 @@ class Levels
     public function getImageOptional()
     {
         return $this->imageOptional;
+    }
+
+    /**
+     * Set parentLevel
+     *
+     * @param \AnlautfuchsBundle\Entity\Levels $parentLevel
+     * @return Levels
+     */
+    public function setParentLevel(\AnlautfuchsBundle\Entity\Levels $parentLevel = null)
+    {
+        $this->parentLevel = $parentLevel;
+
+        return $this;
+    }
+
+    /**
+     * Get parentLevel
+     *
+     * @return \AnlautfuchsBundle\Entity\Levels 
+     */
+    public function getParentLevel()
+    {
+        return $this->parentLevel;
+    }
+
+    /**
+     * Add words
+     *
+     * @param \AnlautfuchsBundle\Entity\Words $words
+     * @return Levels
+     */
+    public function addWord(\AnlautfuchsBundle\Entity\Words $words)
+    {
+        $this->words[] = $words;
+
+        return $this;
+    }
+
+    /**
+     * Remove words
+     *
+     * @param \AnlautfuchsBundle\Entity\Words $words
+     */
+    public function removeWord(\AnlautfuchsBundle\Entity\Words $words)
+    {
+        $this->words->removeElement($words);
+    }
+
+    /**
+     * Get words
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWords()
+    {
+        return $this->words;
+    }
+
+
+    private $children;
+
+    public function getChildren(){
+        return $this->children;
+    }
+
+    public function setChildren($children){
+        $this->children = $children;
+
+        return $this;
     }
 }

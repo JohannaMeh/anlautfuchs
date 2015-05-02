@@ -4,7 +4,6 @@ namespace AnlautfuchsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * Levels
  */
@@ -29,6 +28,41 @@ class Levels
      * @var boolean
      */
     private $secondRow;
+
+    /**
+     * @var integer
+     */
+    private $nextLevel;
+
+    /**
+     * @var string
+     */
+    private $explanationSound;
+
+    /**
+     * @var integer
+     */
+    private $sorting;
+
+    /**
+     * @var string
+     */
+    private $cssClass;
+
+    /**
+     * @var boolean
+     */
+    private $wordSound;
+
+    /**
+     * @var boolean
+     */
+    private $imageOptional;
+
+    /**
+     * @var integer
+     */
+    private $parentLevel;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -103,7 +137,7 @@ class Levels
     /**
      * Set secondRow
      *
-     * @param integer $secondRow
+     * @param boolean $secondRow
      * @return Levels
      */
     public function setSecondRow($secondRow)
@@ -116,11 +150,172 @@ class Levels
     /**
      * Get secondRow
      *
-     * @return integer 
+     * @return boolean 
      */
     public function getSecondRow()
     {
         return $this->secondRow;
+    }
+
+    /**
+     * Set nextLevel
+     *
+     * @param integer $nextLevel
+     * @return Levels
+     */
+    public function setNextLevel($nextLevel)
+    {
+        $this->nextLevel = $nextLevel;
+
+        return $this;
+    }
+
+    /**
+     * Get nextLevel
+     *
+     * @return integer 
+     */
+    public function getNextLevel()
+    {
+        return $this->nextLevel;
+    }
+
+    /**
+     * Set explanationSound
+     *
+     * @param string $explanationSound
+     * @return Levels
+     */
+    public function setExplanationSound($explanationSound)
+    {
+        $this->explanationSound = $explanationSound;
+
+        return $this;
+    }
+
+    /**
+     * Get explanationSound
+     *
+     * @return string 
+     */
+    public function getExplanationSound()
+    {
+        return $this->explanationSound;
+    }
+
+    /**
+     * Set sorting
+     *
+     * @param integer $sorting
+     * @return Levels
+     */
+    public function setSorting($sorting)
+    {
+        $this->sorting = $sorting;
+
+        return $this;
+    }
+
+    /**
+     * Get sorting
+     *
+     * @return integer 
+     */
+    public function getSorting()
+    {
+        return $this->sorting;
+    }
+
+    /**
+     * Set cssClass
+     *
+     * @param string $cssClass
+     * @return Levels
+     */
+    public function setCssClass($cssClass)
+    {
+        $this->cssClass = $cssClass;
+
+        return $this;
+    }
+
+    /**
+     * Get cssClass
+     *
+     * @return string 
+     */
+    public function getCssClass()
+    {
+        return $this->cssClass;
+    }
+
+    /**
+     * Set wordSound
+     *
+     * @param boolean $wordSound
+     * @return Levels
+     */
+    public function setWordSound($wordSound)
+    {
+        $this->wordSound = $wordSound;
+
+        return $this;
+    }
+
+    /**
+     * Get wordSound
+     *
+     * @return boolean 
+     */
+    public function getWordSound()
+    {
+        return $this->wordSound;
+    }
+
+    /**
+     * Set imageOptional
+     *
+     * @param boolean $imageOptional
+     * @return Levels
+     */
+    public function setImageOptional($imageOptional)
+    {
+        $this->imageOptional = $imageOptional;
+
+        return $this;
+    }
+
+    /**
+     * Get imageOptional
+     *
+     * @return boolean 
+     */
+    public function getImageOptional()
+    {
+        return $this->imageOptional;
+    }
+
+    /**
+     * Set parentLevel
+     *
+     * @param integer $parentLevel
+     * @return Levels
+     */
+    public function setParentLevel($parentLevel)
+    {
+        $this->parentLevel = $parentLevel;
+
+        return $this;
+    }
+
+    /**
+     * Get parentLevel
+     *
+     * @return integer 
+     */
+    public function getParentLevel()
+    {
+        return $this->parentLevel;
     }
 
     /**
@@ -155,49 +350,6 @@ class Levels
     {
         return $this->words;
     }
-    /**
-     * @var \AnlautfuchsBundle\Entity\Levels
-     */
-    private $parentLevel;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $word;
-
-
-    /**
-     * Set parentLevel
-     *
-     * @param \AnlautfuchsBundle\Entity\Levels $parentLevel
-     * @return Levels
-     */
-    public function setParentLevel(\AnlautfuchsBundle\Entity\Levels $parentLevel = null)
-    {
-        $this->parentLevel = $parentLevel;
-
-        return $this;
-    }
-
-    /**
-     * Get parentLevel
-     *
-     * @return \AnlautfuchsBundle\Entity\Levels 
-     */
-    public function getParentLevel()
-    {
-        return $this->parentLevel;
-    }
-
-    /**
-     * Get word
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getWord()
-    {
-        return $this->word;
-    }
 
 
     private $children;
@@ -210,145 +362,5 @@ class Levels
         $this->children = $children;
 
         return $this;
-    }
-    /**
-     * @var integer
-     */
-    private $nextLevel;
-
-
-    /**
-     * Set nextLevel
-     *
-     * @param integer $nextLevel
-     * @return Levels
-     */
-    public function setNextLevel($nextLevel)
-    {
-        $this->nextLevel = $nextLevel;
-
-        return $this;
-    }
-
-    /**
-     * Get nextLevel
-     *
-     * @return integer 
-     */
-    public function getNextLevel()
-    {
-        return $this->nextLevel;
-    }
-    /**
-     * @var string
-     */
-    private $levelSound;
-
-
-    /**
-     * Set levelSound
-     *
-     * @param string $levelSound
-     * @return Levels
-     */
-    public function setLevelSound($levelSound)
-    {
-        $this->levelSound = $levelSound;
-
-        return $this;
-    }
-
-    /**
-     * Get levelSound
-     *
-     * @return string 
-     */
-    public function getLevelSound()
-    {
-        return $this->levelSound;
-    }
-    /**
-     * @var string
-     */
-    private $explanationSound;
-
-
-    /**
-     * Set explanationSound
-     *
-     * @param string $explanationSound
-     * @return Levels
-     */
-    public function setExplanationSound($explanationSound)
-    {
-        $this->explanationSound = $explanationSound;
-
-        return $this;
-    }
-
-    /**
-     * Get explanationSound
-     *
-     * @return string 
-     */
-    public function getExplanationSound()
-    {
-        return $this->explanationSound;
-    }
-    /**
-     * @var integer
-     */
-    private $sorting;
-
-
-    /**
-     * Set sorting
-     *
-     * @param integer $sorting
-     * @return Levels
-     */
-    public function setSorting($sorting)
-    {
-        $this->sorting = $sorting;
-
-        return $this;
-    }
-
-    /**
-     * Get sorting
-     *
-     * @return integer 
-     */
-    public function getSorting()
-    {
-        return $this->sorting;
-    }
-    /**
-     * @var string
-     */
-    private $cssClass;
-
-
-    /**
-     * Set cssClass
-     *
-     * @param string $cssClass
-     * @return Levels
-     */
-    public function setCssClass($cssClass)
-    {
-        $this->cssClass = $cssClass;
-
-        return $this;
-    }
-
-    /**
-     * Get cssClass
-     *
-     * @return string 
-     */
-    public function getCssClass()
-    {
-        return $this->cssClass;
     }
 }
