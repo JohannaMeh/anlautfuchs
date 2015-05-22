@@ -1281,10 +1281,10 @@ div.mini-level-selection > ul li.selected {
 
 #unlocked-type,
 #level-success-img{
-    width: 350px;
-    height: 350px;
+    width: 200px;
+    height: 200px;
     position:relative;
-    top: 10%;
+    top: 25%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1318,6 +1318,9 @@ div.mini-level-selection > ul li.selected {
     background: url(../data/img/UI/type_cowboy.png) scroll 0 0 / 100% auto;
 }
 
+.huge-berry {
+    background: url(../data/img/UI/traube.png) scroll 0 0 / 100% auto;
+}
 
 /* credits popup */
 #credits {
