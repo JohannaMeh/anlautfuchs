@@ -1279,7 +1279,15 @@ div.mini-level-selection > ul li.selected {
     background: url(../data/img/UI/popupBackground.png) scroll 0 0 / 100% auto;
 }
 
-#unlocked-type,
+#unlocked-type{
+    width: 350px;
+    height: 350px;
+    position:relative;
+    top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #level-success-img{
     width: 200px;
     height: 200px;
@@ -1288,7 +1296,6 @@ div.mini-level-selection > ul li.selected {
     margin-left: auto;
     margin-right: auto;
 }
-
 
 .type-fox {
     background: url(../data/img/UI/type_fox.png) scroll 0 0 / 100% auto;
