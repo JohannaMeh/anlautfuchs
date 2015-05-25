@@ -76,10 +76,14 @@ class UserController extends Controller
 
                 $level = $this->getDoctrine()->getRepository('AnlautfuchsBundle:Levels')->findOneById($levelId);
 
-                //save level
-                $user->setCurrentLevel($level);
+                // check if the level really is later in the game (should only prevent switchting from E6 to E1)
+                if($user->getCurrentLevel->getSorting()  < $level->getSorting()){
 
-                $em->flush();
+                    //save level
+                    $user->setCurrentLevel($level);
+
+                    $em->flush();
+                }
             }else{
                 $nextLevelId = $user->getCurrentLevel()->getId();
             }
