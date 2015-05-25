@@ -34,17 +34,12 @@ class UserRepository extends EntityRepository
     public function checkPassword($username, $password){
 
         $query = $this->createQueryBuilder('u')
-            ->where('u.name = :username AND u.password = :password')
+            ->where('u.name = :username')
             ->setParameter('username', $username)
-            ->setParameter('password', $password)
             ->getQuery();
 
         $user = $query->getOneOrNullResult();
 
-        if($user){
-            return true;
-        }
-
-        return false;
+        return password_verify($password, $user->getPassword());
     }
 }
