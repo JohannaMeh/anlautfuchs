@@ -1,7 +1,14 @@
+/* 
+    An object used for retrieving information with ajax from the backend.
+*/
+
 Game.AjaxController = (function(){
     var that = {},
 
 
+    /* 
+        Initialises the object 
+    */
     init = function() {
 
 
@@ -9,6 +16,11 @@ Game.AjaxController = (function(){
     },
 
 
+    /* 
+        Loads the level data for the given level ID.
+        After an successful load a levelLoaded event will be triggered
+
+    */
     loadLevel = function(levelId){
         $.ajax({
                 type: "GET",
@@ -31,6 +43,11 @@ Game.AjaxController = (function(){
             });
     },
 
+    /* 
+        Loads the disabled levels for the given user. The backend knows which user is using this browser session.
+        After an successful load a disabledLevelsLoaded event will be triggered
+
+    */
     loadDisabledLevels = function(){
         $.ajax({
                 type: "GET",
@@ -51,6 +68,11 @@ Game.AjaxController = (function(){
             });
     },
 
+    /* 
+        Loads the user data for the given user. The backend knows which user is using this browser session.
+        After an successful load a userLoaded event will be triggered
+
+    */
     loadUser = function(){
         $.ajax({
                 type: "GET",
@@ -73,6 +95,11 @@ Game.AjaxController = (function(){
             });
     },
 
+    /* 
+        Loads all currently available companions from the backend.
+        After an successful load a companionsLoaded event will be triggered
+
+    */
     loadCompanions = function(){
         $.ajax({
                 type: "GET",
@@ -96,6 +123,11 @@ Game.AjaxController = (function(){
     },
 
 
+    /* 
+        Sents the level ID of the finished level to the backend to be saved. The backend will check if the level was already finished or not.
+        After an successful load a disabledLevelsLoaded event will be triggered. Because the AJAX call return the needed data to refresh the levels.
+
+    */
     saveUserLevel = function(levelid){
         $.ajax({
             type: "GET",
@@ -117,6 +149,9 @@ Game.AjaxController = (function(){
         });
     },
 
+    /* 
+        Saves the selected user companion, so that it will be used in future user sessions.
+    */
     saveUserCompanion = function(type){
         $.ajax({
             type: "GET",
@@ -137,6 +172,9 @@ Game.AjaxController = (function(){
         });
     },
 
+    /* 
+        Saves the amount of berriesEaten for the current user.
+    */
     saveUserBerriesEaten = function(berriesEaten){
         $.ajax({
             type: "GET",

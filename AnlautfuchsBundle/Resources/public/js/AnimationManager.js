@@ -1,3 +1,6 @@
+/* 
+    An object responsible for the animations of the companion, tape recorder and berry.
+*/
 Game.AnimationManager = (function(){
     var that = {},
 
@@ -16,7 +19,10 @@ Game.AnimationManager = (function(){
 
     initialised = false;
 
-
+    /* 
+        Intialises the object. 
+        First it initialises the different animations and after that it secures that there will only run one animation at a time.
+    */
     init = function(){
         initTapeRecorderAnimation();
         initCompanionAnimation();
@@ -30,6 +36,9 @@ Game.AnimationManager = (function(){
         return that;
     },
 
+    /* 
+        Moves the Berry to the starting position.
+    */
     resetBerry = function(){
         berryMoves = 0;
         $('#berry').css('margin-left', defaultMarginLeft + 'px');
@@ -38,6 +47,9 @@ Game.AnimationManager = (function(){
         $('#berry').css('transform', 'rotate(' + defaultDegree + 'deg)');
     },
 
+    /* 
+        Initialises the tape recorder animation with the help of the jquery addon animate sprite
+    */
     initTapeRecorderAnimation = function(){
         $(".tape-recorder").animateSprite({
             fps: 6,
@@ -54,6 +66,9 @@ Game.AnimationManager = (function(){
         $(".tape-recorder").animateSprite('stop');
     },
 
+    /* 
+        Initialises the companion animation with the help of the jquery addon animate sprite
+    */
     initCompanionAnimation = function(){
         $(".companion").animateSprite({
             fps: 5,
@@ -103,25 +118,45 @@ Game.AnimationManager = (function(){
     },
 
 
+    /* 
+        Starts the "play" animation of the tape recorder
+    */
     playTapeRecorder = function(){
         $(".tape-recorder").animateSprite('stop');
         $(currentContainer + " .tape-recorder").animateSprite('play', 'play');
     },
 
+    /* 
+        Śtarts the "stop" animation of the tape recorder
+    */
     stopTapeRecorder = function(){
         $(".tape-recorder").animateSprite('stop');
         $(currentContainer+ " .tape-recorder").animateSprite('play', 'stop');
     },
 
+    /* 
+        Changes the companion type and refreshes the animation
+        These types are currently:
+        fox, wizard, girl, pirate, cowboy, red_skin, panda
+    */
     setCompanionType = function(type){
         currentCompanionType = type;
         refreshCompanion();
     },
 
+    /* 
+        Returns the current companion type
+    */
     getCompanionType = function(){
         return currentCompanionType;
     }
 
+    /* 
+        Changes the companion feeling and refreshes the animation.
+        If timeout if undefined or true, the animation will be reset after 1700 milliseconds.
+        The possible feelings are:
+        normal, happy, hungry, sad
+    */
     setCompanionFeeling = function(feeling, timeout){
         if(timeout == undefined){
             timeout = true;
@@ -133,15 +168,25 @@ Game.AnimationManager = (function(){
         }
     },
 
+    /* 
+        Returns the current companion feeling.
+    */
     getCompanionFeeling = function(){
         return currentFeeling;
     },
 
+    /* 
+        Resets the companion feeling to the default feeling
+    */
     resetCompanionFeeling = function(){
         currentFeeling = defaultFeeling;
         refreshCompanion();
     },
 
+    /* 
+        Refreshes the companion.
+        In the method the variable "currentFeeling" and "currentCompanionType" are used to set the companion animation.
+    */
     refreshCompanion = function(){
         if(initialised){
             $(".companion").animateSprite('stop');
@@ -150,11 +195,17 @@ Game.AnimationManager = (function(){
         }
     },
 
+    /* 
+        Changes in which html container the animation should run
+    */
     setCurrentContainer = function(container){
         currentContainer = container;
         refreshCompanion();
     },
 
+    /* 
+        moves the berry to the next position (many calculations, much wow)
+    */
     moveBerry = function(){
         var marginLeft = parseFloat($('#berry').css('margin-left'));
         var bottom = parseFloat($('#berry').css('bottom'));
@@ -236,6 +287,9 @@ Game.AnimationManager = (function(){
 
     },
 
+    /* 
+        Stops running tape recorder and companion animations
+    */
     stopAnimations = function(){
         $('.tape-recorder').animateSprite('stop');
         $('.companion').animateSprite('stop');
