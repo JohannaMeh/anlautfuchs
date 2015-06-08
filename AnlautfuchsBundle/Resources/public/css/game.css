@@ -220,6 +220,10 @@ html, body{
     margin-right: auto;
 }
 
+.form-signin input.form-control{
+    font-family: "Arial";
+}
+
 .form-signin .form-signin-heading{
     font-size:40px;
 }
