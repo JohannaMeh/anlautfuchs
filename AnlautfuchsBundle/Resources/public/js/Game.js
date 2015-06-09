@@ -1,3 +1,6 @@
+/* 
+    Object which initialises the whole game
+*/
 var Game = {
 
     init: function() {

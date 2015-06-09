@@ -1,3 +1,6 @@
+/* 
+    The "main" game controller. It is the center point of the application and contains a good part of the program logic.
+*/
 Game.GameController = (function(){
     var that = {},
 
@@ -27,6 +30,10 @@ Game.GameController = (function(){
 
     disabledLevelsJson = null,
 
+    /* 
+        Initialises the object. It initialises many of the other game components.
+        It also triggers the loading of user data, disabled levels and the different companion models.
+    */
     init = function() {
         ajaxController = Game.AjaxController.init();
 
@@ -86,25 +93,40 @@ Game.GameController = (function(){
         return that;
     },
 
+    /* 
+        Loads the level after it was selected.
+    */
     loadLevelModel = function(levelId){
         // load select model data
         ajaxController.loadLevel(levelId);
     },
 
+    /* 
+        Loads the companion data after the user logged in
+    */
     loadCompanionModel = function(){
         //load available companions
         ajaxController.loadCompanions();
     },
 
+    /* 
+        Loads the user data after the user logged in
+    */
     loadUserModel = function(){
         //load user data
         ajaxController.loadUser();
     },
 
+    /* 
+        Loads the disabled levels for this user he logged in
+    */
     loadDisabledLevels = function(){
         ajaxController.loadDisabledLevels();
     },
 
+    /* 
+        Gets called when the level selected event from the LevelSelectionView gets triggered.
+    */
     onLevelSelected = function(event, levelId){
         //check current user level
         var usingUserLevel = false;
@@ -124,12 +146,21 @@ Game.GameController = (function(){
         switchViewState('companion');
     },
 
+    /* 
+        Gets called when on the playview a level gets selected
+    */
     onPlayViewLevelSelected = function(event, levelId){
         soundManager.stopAllSounds();
         loadLevelModel(levelId);
         playViewLevelChange = true;
     },
 
+    /* 
+        Is called when a level is loaded.
+        This can be from onLevelSelected if the level was already loaded.
+        Or in the most cases it will be after the ajax call to load the level is finished and
+        the levelLoaded event is triggered in the ajaxcontroller.
+    */
     onLevelLoaded = function(event, level){
         levelModel = level;
 
@@ -147,6 +178,10 @@ Game.GameController = (function(){
         }
     },  
 
+    /* 
+        Checks if finishing the level will unlock a new companion type.
+        Used right before finishing a level.
+    */
     checkForLevelFoxType = function(){
         var nextLevelId = levelModel.getNextLevelId();
         if(companionModel){
@@ -154,6 +189,10 @@ Game.GameController = (function(){
         }
     },
 
+    /* 
+        Will be called when the "disabledLevelsLoaded" event gets triggered from the ajax controller.
+        it contains the via ajax loaded data for the disabled levels for the current user
+    */ 
     onDisabledLevelsLoaded = function(event, json){
         levelSelectionView.disableLevels(json);
         playView.disableLevels(json);
@@ -167,6 +206,9 @@ Game.GameController = (function(){
         }
     },
 
+    /* 
+        Provides the playview and soundmanager with the necessary informations for the level
+    */
     setLevelData = function(level){
         // mark current level
         playView.markCurrentLevel(level.getId(), level.getParentId());
@@ -181,12 +223,20 @@ Game.GameController = (function(){
         soundManager.setWordSound(level.getCurrentWord().getSound());
     },
 
+    /* 
+        Gets called when the "userLoaded" event in the ajaxcontroller gets triggered
+        it contains the via ajax loaded user data
+    */
     onUserLoaded = function(event, user){
         userModel = user;
 
         animationManager.setCompanionType(userModel.getCompanion());
     },
 
+    /* 
+        Gets called when the "nextCompanion" event in the companionselection view gets triggered
+        This means the right arrow in the view was clicked
+    */
     onNextCompanion = function(event){
         var current = userModel.getCompanion();
         var next = companionModel.getNext(current);
@@ -194,6 +244,10 @@ Game.GameController = (function(){
         userModel.setCompanion(next);
     },
 
+    /* 
+        Gets called when the "prevCompanion" event in the companionselection view gets triggered
+        This means the left arrow in the view was clicked
+    */
     onPrevCompanion = function(event){
         var current = userModel.getCompanion();
         var prev = companionModel.getPrev(current);
@@ -201,6 +255,10 @@ Game.GameController = (function(){
         userModel.setCompanion(prev);
     },
 
+    /* 
+        Gets called when the "companionSelected" event in the companionselection view gets triggered.
+        This means the button on the view was clicked
+    */
     onCompanionSelected = function(event){
         //set companion per ajax in database?
         ajaxController.saveUserCompanion(userModel.getCompanion());
@@ -208,6 +266,10 @@ Game.GameController = (function(){
         switchViewState('play');
     },
 
+    /* 
+        Gets called when the "companionLoaded" event from the ajaxcontroller get triggered
+        it contains the via ajax loaded companion data
+    */
     onCompanionsLoaded = function(event, companions){
         companionModel = companions;
 
@@ -217,6 +279,13 @@ Game.GameController = (function(){
         }
     },
 
+    /* 
+        Gets called when the "charClicked" event from the playview gets triggered
+        This means an answer was selected.
+        In here most of the game logic gets handled.
+        It checks if the char is correct or incorrect.
+        If the level is finished or the berry gets moved.        
+    */
     onCharClicked = function(event, character){
         console.log("character selected", character);
         var success = levelModel.checkCharacter(character);
@@ -278,6 +347,9 @@ Game.GameController = (function(){
         }
     },
 
+    /* 
+        Loads the nex word and provides the informations to the playview and animationmanager
+    */
     playNextWord = function(){
         // set next word
         var nextWord = levelModel.getNextWord();
@@ -294,10 +366,17 @@ Game.GameController = (function(){
         }
     }
 
+    /* 
+        Gets called when the "wordSoundButtonClicked" event from the playview gets triggered.
+        This means the sound button was clicked.
+    */
     onWordSoundButtonClicked = function(event){
         soundManager.playWordSound();
     },
 
+    /* 
+        Gets called when the "startButtonClicked" event from the playview gets triggered.
+    */
     onStartButtonClicked = function(event){
         soundManager.stopAllSounds();
 
@@ -306,11 +385,17 @@ Game.GameController = (function(){
         }
     },
 
+    /* 
+        Gets called when the "soundStarted" event from the sound manager gets triggered.
+    */
     onSoundStart = function(event){
         console.log('sound start');
         animationManager.playTapeRecorder();
     },
 
+    /* 
+        Gets called when the "soundEnded" event from the sound manager gets triggered.
+    */
     onSoundEnded = function(event){
         console.log('sound ended => end animation');
         animationManager.stopTapeRecorder();
@@ -323,6 +408,9 @@ Game.GameController = (function(){
         }
     },
 
+    /* 
+        Starts the next level
+    */
     startNextLevel = function(){
         levelFinished = false;
         soundManager.stopAllSounds();
@@ -330,16 +418,27 @@ Game.GameController = (function(){
         animationManager.resetBerry();
     }
 
+    /* 
+        Gets called when the logout button gets clicked.
+        Now the "berries eaten view" gets displayed.
+    */
     onLogoutButtonClicked = function(event){
         levelFinished = false;
         //switch to logout screen
         switchViewState('berries-eaten');
     },
 
+    /* 
+        Really logs the user out by sending them to the logout page.
+    */
     onRealLogout = function(event){
         window.location = "/logout";
     },
 
+    /* 
+        Gets called when the backButton gets clicked.
+        Switches to te previous view.
+    */
     onBackButtonClicked = function(event){
         switch(currentView){
             case 'level':
@@ -353,6 +452,11 @@ Game.GameController = (function(){
         }
     },
 
+    /* 
+        Handles the view switches.
+        Gets called when the backbutton or the logout button gets called.
+        Or if a level or companion gets selected.
+    */
     switchViewState = function(view){
         currentView = view;
         soundManager.stopAllSounds();
@@ -407,6 +511,10 @@ Game.GameController = (function(){
         }
     },
 
+    /* 
+        Gets called when the tape recorder gets clicked on any view.
+        Toggles the corresponding sound which then by event starts or ends the animation.
+    */
     onTapeRecorderClicked = function(event){
         switch(currentView){
             case 'level':

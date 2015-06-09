@@ -1,3 +1,6 @@
+/* 
+    An object responsible for all available companions.
+*/
 Game.CompanionModel = (function(){
     var that = {},
     types = [],
@@ -5,6 +8,9 @@ Game.CompanionModel = (function(){
     typeVisible = [],
     disabledLevelIds = [],
 
+    /* 
+        Initialises the object and sets default values.
+    */
     init = function() {
         types = [];
         typeVisible = [];
@@ -12,6 +18,9 @@ Game.CompanionModel = (function(){
         return that;
     },
 
+    /* 
+        Returns the next available companion type.
+    */
     getNext = function(type){
         var position = types.indexOf(type);
         if(position != -1){
@@ -37,6 +46,9 @@ Game.CompanionModel = (function(){
         return types[0];
     },
 
+    /* 
+        Returns the previous available companion type.
+    */
     getPrev = function(type){
         var position = types.indexOf(type);
         if(position != -1){
@@ -60,6 +72,9 @@ Game.CompanionModel = (function(){
         return types[0];
     },
 
+    /* 
+        Sets the companion from a given json string.
+    */
     createFromJson = function(json){
         for(var i = 0; i < json.length; i++){
             types[i] = json[i].type;
@@ -70,6 +85,9 @@ Game.CompanionModel = (function(){
         checkVisibleModels();
     },
 
+    /* 
+        Sets the disabled level ids from a list.
+    */
     setDisabledLevels = function(levelList){
         var i = 0;
         for(var key in levelList){
@@ -79,6 +97,9 @@ Game.CompanionModel = (function(){
         checkVisibleModels();
     },
 
+    /* 
+        check which companion types are visible with the known disabled levels
+    */
     checkVisibleModels = function(){
         //neededlevel id should have the same position as the type itself and typeVisible
         for(var i = 0; i < neededLevelIds.length; i++){
@@ -86,6 +107,9 @@ Game.CompanionModel = (function(){
         }
     },
 
+    /* 
+        Checks if for the given level id is still disabled or not.
+    */
     checkIfVisible = function(neededLevelId){
         for(var i = 0; i < disabledLevelIds.length; i++){
 
@@ -98,6 +122,9 @@ Game.CompanionModel = (function(){
         return true;
     },
 
+    /* 
+        Checks if the given level unlocks a companion type
+    */
     checkIfLevelUnlocksFoxType = function(levelId){
         for(var i = 0; i < neededLevelIds.length; i++){
             if(levelId == neededLevelIds[i]){
