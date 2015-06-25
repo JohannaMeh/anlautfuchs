@@ -22,6 +22,7 @@ Game.CompanionModel = (function(){
         Returns the next available companion type.
     */
     getNext = function(type){
+        console.log("next " + types);
         var position = types.indexOf(type);
         if(position != -1){
             var nextPos = 0;
@@ -50,19 +51,21 @@ Game.CompanionModel = (function(){
         Returns the previous available companion type.
     */
     getPrev = function(type){
+        console.log("previous " + types);
         var position = types.indexOf(type);
         if(position != -1){
-            var nextPos = types[types.length - 1];
+            var nextPos = types.length - 1;
 
             if(position > 0){
                 nextPos = position - 1;
             }
-
+            console.log("check prev: " + nextPos);
             while(!typeVisible[nextPos]){
+                console.log("check prev: " + nextPos);
                 if(nextPos > 0){
                     nextPos--;
                 }else{
-                    nextPos = types[types.length - 1];
+                    nextPos = types.length - 1;
                 }
             }
             
