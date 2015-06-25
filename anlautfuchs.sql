@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 25, 2015 at 06:00 PM
--- Server version: 5.5.43-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.9
+-- Erstellungszeit: 25. Jun 2015 um 18:54
+-- Server Version: 5.5.43-0ubuntu0.14.04.1
+-- PHP-Version: 5.5.9-1ubuntu4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `design_for_the_children`
+-- Datenbank: `design_for_the_children`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `characters`
+-- Tabellenstruktur für Tabelle `characters`
 --
 
 CREATE TABLE IF NOT EXISTS `characters` (
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
--- Dumping data for table `characters`
+-- Daten für Tabelle `characters`
 --
 
 INSERT INTO `characters` (`id`, `character`, `image`, `row`, `vowel`, `display`) VALUES
@@ -79,7 +79,7 @@ INSERT INTO `characters` (`id`, `character`, `image`, `row`, `vowel`, `display`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `companion`
+-- Tabellenstruktur für Tabelle `companion`
 --
 
 CREATE TABLE IF NOT EXISTS `companion` (
@@ -87,27 +87,28 @@ CREATE TABLE IF NOT EXISTS `companion` (
   `type` varchar(100) NOT NULL,
   `sorting` int(11) NOT NULL,
   `needed_level_id` int(11) DEFAULT NULL,
+  `unlockedOnGameWon` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_1BAD2E69269F0516` (`needed_level_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `companion`
+-- Daten für Tabelle `companion`
 --
 
-INSERT INTO `companion` (`id`, `type`, `sorting`, `needed_level_id`) VALUES
-(1, 'fox', 0, 1),
-(2, 'pirate', 3, 16),
-(3, 'red_skin', 5, 1),
-(4, 'wizard', 1, 10),
-(5, 'cowboy', 4, 22),
-(6, 'panda', 6, 2),
-(7, 'girl', 2, 1);
+INSERT INTO `companion` (`id`, `type`, `sorting`, `needed_level_id`, `unlockedOnGameWon`) VALUES
+(1, 'fox', 0, 1, 0),
+(2, 'pirate', 3, 22, 1),
+(3, 'red_skin', 5, 1, 0),
+(4, 'wizard', 1, 10, 0),
+(5, 'cowboy', 4, 22, 0),
+(6, 'panda', 6, 2, 0),
+(7, 'girl', 2, 16, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `levels`
+-- Tabellenstruktur für Tabelle `levels`
 --
 
 CREATE TABLE IF NOT EXISTS `levels` (
@@ -127,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `levels` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
--- Dumping data for table `levels`
+-- Daten für Tabelle `levels`
 --
 
 INSERT INTO `levels` (`id`, `name`, `image`, `second_row`, `parent_level_id`, `next_level_id`, `explanation_sound`, `sorting`, `css_class`, `word_sound`, `image_optional`) VALUES
@@ -158,7 +159,7 @@ INSERT INTO `levels` (`id`, `name`, `image`, `second_row`, `parent_level_id`, `n
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabellenstruktur für Tabelle `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -168,41 +169,42 @@ CREATE TABLE IF NOT EXISTS `users` (
   `current_level_id` int(11) DEFAULT NULL,
   `user_companion_id` int(11) DEFAULT NULL,
   `berries_eaten` int(11) NOT NULL DEFAULT '0',
+  `gameWon` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `current_level_id` (`current_level_id`),
   KEY `user_companion` (`user_companion_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
--- Dumping data for table `users`
+-- Daten für Tabelle `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `password`, `current_level_id`, `user_companion_id`, `berries_eaten`) VALUES
-(1, 'johanna', '$2y$10$4HI6spUqBBeUYEw0ohWRbOmXT3VW63vNVnFOU5MZVMIpCXo5CLz/C', 27, 7, 38),
-(2, 'dorina', '$2y$10$MfB6YdpeuqYdrxuJHhf6E.xbRuKIVZb1jh2hcTxD3bT7WSWEsZ71y', 2, 2, 1),
-(3, 'renate', '$2y$10$u5mAiiBsBtClJV6OzteiZ..duC24RzWvyh6yNvcyO6sZEsgoauPsO', 10, 3, 2),
-(4, 'luis', '$2y$10$mSu8fA2Cx2CFP55UVCKM8eiB79siFVYZJRhP6y7EO4kV2173.Vxly', 10, 2, 2),
-(5, 'lukas', '$2y$10$7gNGHInYdLAgUcE4VzifpuRAM1hsSS6zlWRPwha0MqrWD3oUJZWAq', 2, 4, 1),
-(6, 'simon', '$2y$10$NUq/UTCjlPT/x.9nI1Dp5um2XTRfUsB/VQnuoCAVA5XBRylNJ25li', 10, 2, 2),
-(7, 'francisco', '$2y$10$ohpqn3h88aXMy1QU2YozHeqJS2XIG0czLEtoImXJmPKQspegna5lW', 10, 5, 3),
-(8, 'thomas', '$2y$10$WP2NyqKoweFxSZAf0zLNlOLTZ9tYMC6MGNax6x.iAdFTN.XqEyBZi', 10, 2, 2),
-(9, 'elias', '$2y$10$GEmgu81nG.P.X47IUZHoJeBmu8VURNLG3MQaEtAjhm60hsod2vvm.', 10, 4, 4),
-(10, 'enrico', '$2y$10$JPkJ143tZ6nMDEpgA8LWbu5Owoa5RvEbB2jy6..YVPeDIjIpg55bG', 2, 5, 1),
-(11, 'lena', '$2y$10$tQczAG20ggT8sUHYCLOMFe1nEspMTuPPjLN8UNVjxp9Znk.HiF6RC', 2, 1, 1),
-(12, 'hannah', '$2y$10$z7juRik5NXLDFmTgX6BzDOsl/5gFPe.B9hDsvYpBboxvat.Ohawti', 10, 4, 2),
-(13, 'selina', '$2y$10$a0iNWu8llTD1.4x2NUCDNOwSdR4YNKuzbb74rI8DOaPGIKdjTOMgS', 10, 5, 2),
-(14, 'emily', '$2y$10$IPt2GovYU08ipr55AJae5OhNNEPHvhrTHYtgQB7U83wrndfZPt9JO', 2, 3, 1),
-(15, 'luba', '$2y$10$C2lpQg1KiA0MaLjCg2y82.vO1xeLGjlLZTW5p9QTZwb0OD5NI5IRy', 10, 7, 2),
-(16, 'vera', '$2y$10$9l3I/p/C5VGctYcB1bU89uhQ2LTPzj.IkWAaRWBsZ6Cw2cGtqn6EW', 2, 1, 2),
-(17, 'eva', '$2y$10$.TaS2kGYxt7nXwFkf3Aiyusmkc96fMh3PqD4Ev63hrMLBZ7gYoMZK', 10, 5, 4),
-(18, 'paulina', '$2y$10$ON..xzp0ZG4pr3DP7wRTZ.1EWMGWL9ySh4Fn21ZBIKdrs4uMjudJ.', 10, 1, 2),
-(19, 'emmy', '$2y$10$.gtky2Mlm6a4H.XSFRN0z.4Du1imvcFNp.NTlhVtUCGbUphKdaq2G', 2, 7, 1),
-(21, 'testnutzer', '$2y$10$flYRyir4zv8owwuyxCxl2eg4w7qmnSIEEgC.1woBBlyUV/OZTm4ui', 1, 1, 0);
+INSERT INTO `users` (`id`, `name`, `password`, `current_level_id`, `user_companion_id`, `berries_eaten`, `gameWon`) VALUES
+(1, 'johanna', '$2y$10$4HI6spUqBBeUYEw0ohWRbOmXT3VW63vNVnFOU5MZVMIpCXo5CLz/C', 27, 2, 87, 1),
+(2, 'dorina', '$2y$10$MfB6YdpeuqYdrxuJHhf6E.xbRuKIVZb1jh2hcTxD3bT7WSWEsZ71y', 2, 2, 1, 0),
+(3, 'renate', '$2y$10$u5mAiiBsBtClJV6OzteiZ..duC24RzWvyh6yNvcyO6sZEsgoauPsO', 10, 3, 2, 0),
+(4, 'luis', '$2y$10$mSu8fA2Cx2CFP55UVCKM8eiB79siFVYZJRhP6y7EO4kV2173.Vxly', 10, 2, 2, 0),
+(5, 'lukas', '$2y$10$7gNGHInYdLAgUcE4VzifpuRAM1hsSS6zlWRPwha0MqrWD3oUJZWAq', 2, 4, 1, 0),
+(6, 'simon', '$2y$10$NUq/UTCjlPT/x.9nI1Dp5um2XTRfUsB/VQnuoCAVA5XBRylNJ25li', 10, 2, 2, 0),
+(7, 'francisco', '$2y$10$ohpqn3h88aXMy1QU2YozHeqJS2XIG0czLEtoImXJmPKQspegna5lW', 10, 5, 3, 0),
+(8, 'thomas', '$2y$10$WP2NyqKoweFxSZAf0zLNlOLTZ9tYMC6MGNax6x.iAdFTN.XqEyBZi', 10, 2, 2, 0),
+(9, 'elias', '$2y$10$GEmgu81nG.P.X47IUZHoJeBmu8VURNLG3MQaEtAjhm60hsod2vvm.', 10, 4, 4, 0),
+(10, 'enrico', '$2y$10$JPkJ143tZ6nMDEpgA8LWbu5Owoa5RvEbB2jy6..YVPeDIjIpg55bG', 2, 5, 1, 0),
+(11, 'lena', '$2y$10$tQczAG20ggT8sUHYCLOMFe1nEspMTuPPjLN8UNVjxp9Znk.HiF6RC', 2, 1, 1, 0),
+(12, 'hannah', '$2y$10$z7juRik5NXLDFmTgX6BzDOsl/5gFPe.B9hDsvYpBboxvat.Ohawti', 10, 4, 2, 0),
+(13, 'selina', '$2y$10$a0iNWu8llTD1.4x2NUCDNOwSdR4YNKuzbb74rI8DOaPGIKdjTOMgS', 10, 5, 2, 0),
+(14, 'emily', '$2y$10$IPt2GovYU08ipr55AJae5OhNNEPHvhrTHYtgQB7U83wrndfZPt9JO', 2, 3, 1, 0),
+(15, 'luba', '$2y$10$C2lpQg1KiA0MaLjCg2y82.vO1xeLGjlLZTW5p9QTZwb0OD5NI5IRy', 10, 7, 2, 0),
+(16, 'vera', '$2y$10$9l3I/p/C5VGctYcB1bU89uhQ2LTPzj.IkWAaRWBsZ6Cw2cGtqn6EW', 2, 1, 2, 0),
+(17, 'eva', '$2y$10$.TaS2kGYxt7nXwFkf3Aiyusmkc96fMh3PqD4Ev63hrMLBZ7gYoMZK', 10, 5, 4, 0),
+(18, 'paulina', '$2y$10$ON..xzp0ZG4pr3DP7wRTZ.1EWMGWL9ySh4Fn21ZBIKdrs4uMjudJ.', 10, 1, 2, 0),
+(19, 'emmy', '$2y$10$.gtky2Mlm6a4H.XSFRN0z.4Du1imvcFNp.NTlhVtUCGbUphKdaq2G', 2, 7, 1, 0),
+(21, 'testnutzer', '$2y$10$flYRyir4zv8owwuyxCxl2eg4w7qmnSIEEgC.1woBBlyUV/OZTm4ui', 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `words`
+-- Tabellenstruktur für Tabelle `words`
 --
 
 CREATE TABLE IF NOT EXISTS `words` (
@@ -215,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `words` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=234 ;
 
 --
--- Dumping data for table `words`
+-- Daten für Tabelle `words`
 --
 
 INSERT INTO `words` (`id`, `word`, `image`, `sound`, `solution`) VALUES
@@ -456,7 +458,7 @@ INSERT INTO `words` (`id`, `word`, `image`, `sound`, `solution`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `words_for_level`
+-- Tabellenstruktur für Tabelle `words_for_level`
 --
 
 CREATE TABLE IF NOT EXISTS `words_for_level` (
@@ -468,7 +470,7 @@ CREATE TABLE IF NOT EXISTS `words_for_level` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `words_for_level`
+-- Daten für Tabelle `words_for_level`
 --
 
 INSERT INTO `words_for_level` (`level_id`, `word_id`) VALUES
@@ -1602,30 +1604,30 @@ INSERT INTO `words_for_level` (`level_id`, `word_id`) VALUES
 (27, 233);
 
 --
--- Constraints for dumped tables
+-- Constraints der exportierten Tabellen
 --
 
 --
--- Constraints for table `companion`
+-- Constraints der Tabelle `companion`
 --
 ALTER TABLE `companion`
   ADD CONSTRAINT `FK_1BAD2E69269F0516` FOREIGN KEY (`needed_level_id`) REFERENCES `levels` (`id`);
 
 --
--- Constraints for table `levels`
+-- Constraints der Tabelle `levels`
 --
 ALTER TABLE `levels`
   ADD CONSTRAINT `levels_ibfk_1` FOREIGN KEY (`parent_level_id`) REFERENCES `levels` (`id`);
 
 --
--- Constraints for table `users`
+-- Constraints der Tabelle `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`current_level_id`) REFERENCES `levels` (`id`),
   ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`user_companion_id`) REFERENCES `companion` (`id`);
 
 --
--- Constraints for table `words_for_level`
+-- Constraints der Tabelle `words_for_level`
 --
 ALTER TABLE `words_for_level`
   ADD CONSTRAINT `FK_B2B190165FB14BA7` FOREIGN KEY (`level_id`) REFERENCES `levels` (`id`),
