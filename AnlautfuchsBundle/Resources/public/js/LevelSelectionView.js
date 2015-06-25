@@ -37,6 +37,9 @@ Game.LevelSelectionView = (function(){
         $('.level-selection-container').show();
         $('#header-text').text('Wähle deine Übung');
         $('#back-button').hide();
+        $('.selected').removeClass('selected');
+        $('.level-selection ul.sub-level').hide();
+        $('#level-select-button').addClass('disabled');
     },
 
     /* 
