@@ -1,3 +1,6 @@
+/* 
+    Contains informations about the current user.
+*/
 Game.UserModel = (function(){
     var that = {},
 
@@ -6,40 +9,66 @@ Game.UserModel = (function(){
     name = null,
     berriesEaten = null,
 
-
+    /* 
+        Initializes the user. Does nothing...
+    */
     init = function() {
 
         return that;
     },
 
+    /* 
+        Returns the highest level of the user.
+    */
     getCurrentLevel = function(){
         return currentLevel;
     },
 
+    /* 
+        Sets the highest level of the user.
+    */
     setCurrentLevel = function(level){
         currentLevel = level;
     },
 
+    /* 
+        Returns the current user companion.
+    */
     getCompanion = function(){
         return companion;
     },
 
+    /* 
+        Sets the current user companion.
+    */
     setCompanion = function(newCompanion){
         companion = newCompanion;
     },
 
+    /* 
+        Returns the value of currently eaten berries.
+    */
     getBerriesEaten = function(){
         return berriesEaten;
     },
 
+    /* 
+        Sets the value of currently eaten berries.
+    */
     setBerriesEaten = function(newBerriesEaten){
         berriesEaten = newBerriesEaten;
     },
 
+    /* 
+        Returns the user name. (not used?)
+    */
     getName = function(){
         return name;
     },
 
+    /* 
+        Creates the user from an json string.
+    */
     createFromJson = function(json){
         name = json.name;
 

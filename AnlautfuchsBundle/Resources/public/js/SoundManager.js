@@ -1,3 +1,6 @@
+/* 
+    This object manages the playing and stopping of all sounds.
+*/
 Game.SoundManager = (function(){
     var that = {},
     basisUrl = '/bundles/anlautfuchs/',
@@ -21,7 +24,9 @@ Game.SoundManager = (function(){
     currentHowl = null,
 
 
-
+    /* 
+        Initializes the object by setting some fixed sound paths.
+    */
     init = function(){
 
 
@@ -42,6 +47,9 @@ Game.SoundManager = (function(){
     },
 
 
+    /* 
+        Plays the sound of the current word.
+    */
     playWordSound = function(){
         stopAllSounds();
 
@@ -59,12 +67,17 @@ Game.SoundManager = (function(){
         }
     },
 
+    /* 
+        Sets the sound for the current word.
+    */
     setWordSound = function(soundpath){
         console.log('word sound', soundpath);
         wordSoundUrl = basisUrl + soundpath;
     },
 
-
+    /* 
+        Toggles the explanation sound for the current level.
+    */
     toggleLevelSound = function(){
         if(soundPlaying){
             stopAllSounds();
@@ -83,6 +96,9 @@ Game.SoundManager = (function(){
         }
     },
 
+    /* 
+        Sets the explanation sound of the current level.
+    */
     setLevelSound = function(soundpath){
         console.log('level sound', soundpath);
         levelSoundUrl = basisUrl + soundpath;
@@ -97,6 +113,9 @@ Game.SoundManager = (function(){
         failureSoundEl.play();
     },*/
 
+    /* 
+        Toggles the level finished sound for the normal level without unlocking a companion type.
+    */
     toggleFinishLevelSound = function(){
         if(soundPlaying){
             stopAllSounds();
@@ -115,7 +134,9 @@ Game.SoundManager = (function(){
         }
     },
 
-
+    /* 
+        Toggles the level finished sound for the level where a companion type gets unlocked.
+    */
     toggleSpecialFinishLevelSound = function(){
         if(soundPlaying){
             stopAllSounds();
@@ -134,6 +155,9 @@ Game.SoundManager = (function(){
         }
     },
 
+    /* 
+        Toggles the sound for the chose level view.
+    */
     toggleChoseLevelSound = function(){
         if(soundPlaying){
             stopAllSounds();
@@ -152,6 +176,9 @@ Game.SoundManager = (function(){
         }
     },
 
+    /* 
+        Toggles the sound for th chose companion view.
+    */
     toggleChoseCompanionSound = function(){
         if(soundPlaying){
             stopAllSounds();
@@ -170,6 +197,9 @@ Game.SoundManager = (function(){
         }
     },
 
+    /* 
+        Toggles the sound for the login page
+    */
     toggleLoginSound = function(){
        if(soundPlaying){
             stopAllSounds();
@@ -188,6 +218,9 @@ Game.SoundManager = (function(){
         }
     },
 
+    /* 
+        Toggle the sound for the logout page.
+    */
     toggleLogoutSound = function(){
         if(soundPlaying){
             stopAllSounds();
@@ -206,6 +239,9 @@ Game.SoundManager = (function(){
         }
     },
 
+    /* 
+        Gets called when a sound finished playing.
+    */
     stopListener = function(event){
         console.log("#########Sound Ende");
         $(that).trigger('soundEnded');
@@ -213,6 +249,9 @@ Game.SoundManager = (function(){
         soundPlaying = false;
     },
 
+    /* 
+        Stops all sunds which are currenty playing.
+    */
     stopAllSounds = function(){
         if(currentHowl){
             currentHowl.stop();

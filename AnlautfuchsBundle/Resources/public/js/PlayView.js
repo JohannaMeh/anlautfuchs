@@ -1,3 +1,6 @@
+/* 
+    The PlayView which is the "real" game view for the program.
+*/
 Game.PlayView = (function(){
     var that = {},
     basisUrl = '/bundles/anlautfuchs/',
@@ -13,6 +16,9 @@ Game.PlayView = (function(){
     useVisibility = false,
     heightTreshold = 720,
 
+    /* 
+        Initializes the object. Sets some listeners and prepares the view.
+    */
     init = function() {
 
         $('#start-button').on('click', onStartButtonClicked);
@@ -34,6 +40,9 @@ Game.PlayView = (function(){
         return that;
     },
 
+    /* 
+        Checks the height of the browser window, so that it can change some mechanism depending on it.
+    */
     checkUseVisibility = function(){
         if($(window).height() < heightTreshold){
             useVisibility = false;
@@ -45,11 +54,17 @@ Game.PlayView = (function(){
         console.log("window height: ", $(window).height());
     },
 
+    /* 
+        Hides the view container
+    */
     hideView = function(){
         // hide view container
         $('.play-view-container').hide();
     },
 
+    /* 
+        Shows the view container
+    */
     showView = function(){
         // show view container
         $('.play-view-container').show();
@@ -58,6 +73,9 @@ Game.PlayView = (function(){
         resetView();
     },
 
+    /* 
+        Resets the view to certain defaults. 
+    */
     resetView = function(){
         $('.game-controls').css('visibility', 'hidden');
         $('#word-image').css('visibility','hidden');
@@ -73,6 +91,9 @@ Game.PlayView = (function(){
         gameStarted = false;
     },
 
+    /* 
+        Resizes te character boxes to fit the current screen and to be as big as possible.
+    */
     resizeCharacterBoxes = function(){
         var countBoxes = $('#wordrow-one .character-box').length;
 
@@ -83,6 +104,9 @@ Game.PlayView = (function(){
         $('.character-box').width(boxSize);
     },
 
+    /* 
+        Callback for click on an character. If the games was started the char informations will be sent to the game controller.
+    */
     selectCharacter = function(event){
         if(gameStarted){
             var character = $(this).attr('character');
@@ -90,6 +114,9 @@ Game.PlayView = (function(){
         }
     },
 
+    /* 
+        Mark given character as correct.
+    */
     markCharacterAsCorrect = function(character){
         console.log('correct', character);
         console.log('correct jquery', $('div[character="'+character+'"]'));
@@ -97,17 +124,26 @@ Game.PlayView = (function(){
         setTimeout(removeCharacterMarks, 1500);
     },
 
+    /* 
+       Mark given character as incorrect
+    */
     markCharacterAsIncorrect = function(character){
         console.log('incorrect', character);
         console.log('incorrect jquery', $('div[character="'+character+'"]'));
         $('div[character="'+character+'"]').addClass('incorrect');
     },
 
+    /* 
+        Removes all marks, correct and incorrects.
+    */
     removeCharacterMarks = function(){
         $('.character-box.correct').removeClass('correct');
         $('.character-box.incorrect').removeClass('incorrect');
     },
 
+    /* 
+        Sets the image for the current word. Depends on the setting if the image is optional or not.
+    */
     setWordImage = function(image, imageOptional){
 
         currentImage = image;
@@ -126,6 +162,9 @@ Game.PlayView = (function(){
         }
     },
 
+    /* 
+        Prepares the playview for the current level.
+    */
     prepareLevel = function(showSecondRow, newShowImage, newWordSound){
         $('.game-controls').css('visibility', 'hidden');
         $('#word-image').css('visibility','hidden');
@@ -151,12 +190,18 @@ Game.PlayView = (function(){
         gameStarted = false;
     },
 
+    /* 
+        Forwards the event that the sound should be played.
+    */
     onSoundButtonClicked = function(event){
         if(gameStarted){
             $(that).trigger('onWordSoundButtonClicked');
         }
     },
 
+    /* 
+        Shows the real image if the image is optional.
+    */
     onWordImageClicked = function(event){
         if(!$('#word-image').hasClass('real-image')){
             $('#word-image').addClass('real-image');
@@ -164,10 +209,16 @@ Game.PlayView = (function(){
         }
     },
 
+    /* 
+        Forwards the event that the explanation sound should be played/ stopped.
+    */
     onTapeRecorderClicked = function(event){
         $(that).trigger('tapeRecorderClicked');
     },
 
+    /* 
+        Starts the game.
+    */
     onStartButtonClicked = function(event){
         $('.game-controls').css('visibility', 'visible');
 
@@ -189,6 +240,9 @@ Game.PlayView = (function(){
         $(that).trigger('startButtonClicked');
     },
 
+    /* 
+        Shows the thought bubble of the companion.
+    */
     showThoughtBubble = function(state){
         switch(state){
             case 'correct':
@@ -201,6 +255,9 @@ Game.PlayView = (function(){
         }
     },
 
+    /* 
+        Hides the companion thought bubble.
+    */
     hideThoughtBubble = function(){
         $('.play-view-container .thought-bubble').removeClass('correct');
         $('.play-view-container .thought-bubble').removeClass('incorrect');
@@ -209,6 +266,9 @@ Game.PlayView = (function(){
         $('.play-view-container .thought-bubble').css('visibility', 'hidden');
     },
 
+    /* 
+        Checks if the level selection can be changed and checks if sublevels must be hidden or shown.
+    */
     levelSelectionChange = function(event){
         // remove other selected
         if($(this).parents().hasClass('sub-level')){
@@ -250,6 +310,9 @@ Game.PlayView = (function(){
         }
     },
 
+    /* 
+        Selects the level and tells it to the game controller per event.
+    */
     selectLevel = function(event){
         if($(this).hasClass('disabled')){
             return;
@@ -260,6 +323,9 @@ Game.PlayView = (function(){
         }
     },
 
+    /* 
+        Disables the levels on the level list.
+    */
     disableLevels = function(levelList) {
         console.log('disable Levels', levelList);
         $('.mini-level-selection li').removeClass('disabled');
@@ -269,6 +335,9 @@ Game.PlayView = (function(){
         }
     },
 
+    /* 
+        Marks the current level.
+    */
     markCurrentLevel = function(levelId, parentId){
         console.log('parentId', levelId, parentId);
         $(".mini-level-selection li.selected").removeClass('selected');
@@ -280,12 +349,18 @@ Game.PlayView = (function(){
         }
     },
 
+    /* 
+        Sets the number of berries eaten.
+    */
     setBerriesEaten = function(berriesEaten){
         var berriesEatenText = 'x' + berriesEaten;
         $('#berries-eaten-sign > span').text(berriesEatenText);
     },
 
 
+    /* 
+        Show popup that an companion type was unlocked.
+    */
     showFoxUnlockedPopup = function(foxType){
         console.log("Yaaaay unlocked: ", foxType);
 
@@ -307,7 +382,9 @@ Game.PlayView = (function(){
         }, 3800);
     },
 
-
+    /* 
+        Shows popup that a level was finished.
+    */
     showLevelFinishedPopup = function(hideAfterTimeout){
         if(hideAfterTimeout == undefined){
             hideAfterTimeout = true;
@@ -324,7 +401,9 @@ Game.PlayView = (function(){
         }
     },
 
-
+    /* 
+        Hides all popups.
+    */
     hidePopups = function(){
         $("#type-unlocked-popup").fadeOut();
         $("#level-finished-popup").fadeOut();

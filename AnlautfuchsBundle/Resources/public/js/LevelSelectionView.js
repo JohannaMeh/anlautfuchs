@@ -1,9 +1,15 @@
+/* 
+    View for the level selection.
+*/
 Game.LevelSelectionView = (function(){
     var that = {},
 
     /* Variables */
     currSelectedLevel = null,
 
+    /* 
+        Initializes the object.
+    */
     init = function() {
 
         $('.level-selection > ul li').on("click", levelSelectionChange);
@@ -14,13 +20,18 @@ Game.LevelSelectionView = (function(){
         return that;
     },
     
-        
+    /* 
+        Hides the view.
+    */
     hideView = function(){
         // hide view container
         $('.level-selection-container').hide();
         $('#back-button').show();
     },
 
+    /* 
+        Shows the view
+    */
     showView = function(){
         // show view container
         $('.level-selection-container').show();
@@ -28,6 +39,9 @@ Game.LevelSelectionView = (function(){
         $('#back-button').hide();
     },
 
+    /* 
+        Checks if the change in the level selection is possible and shows sublevel if needed or hides already shown sublevels.
+    */
     levelSelectionChange = function(event){
 
 
@@ -72,6 +86,9 @@ Game.LevelSelectionView = (function(){
         }
     },
 
+    /* 
+        Selects a level if it is not disabled.
+    */
     selectLevel = function(event){
         if($(this).hasClass('disabled')){
             return;
@@ -82,6 +99,9 @@ Game.LevelSelectionView = (function(){
         }
     },
 
+    /* 
+        Disables all levels which are not on the given levelList.
+    */
     disableLevels = function(levelList) {
         $('.level-selection li').removeClass('disabled');
         for(var key in levelList){
@@ -90,6 +110,9 @@ Game.LevelSelectionView = (function(){
         }
     },
 
+    /* 
+        Sends an tapeRecorderClicked event if the tape recorder get clicked.
+    */
     onTapeRecorderClicked = function(event){
         $(that).trigger('tapeRecorderClicked');
     };
