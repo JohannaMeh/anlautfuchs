@@ -224,11 +224,11 @@ Game.LevelModel = (function(){
     /* 
         Prints a list of the words for this level to the console. Useful for debugging purposes.
     */
-    printWords = function(){
+    /*printWords = function(){
         for(var i = 0; i < words.length; i++){
             console.log('Word ',i,words[i].getWord());
         }
-    },
+    },*/
 
     /* 
         Tells if finishing this level will unlock a companion type and which type.
@@ -242,7 +242,6 @@ Game.LevelModel = (function(){
     */
     setFoxTypeUnlockable = function(foxType){
         foxTypeUnlockable = foxType;
-        console.log("FoxType set: ", foxType);
     },
 
     /* 
@@ -255,7 +254,6 @@ Game.LevelModel = (function(){
                 alreadyFinishedOnce = false;
             }
         }
-        console.log("Level was already finished Once: ", alreadyFinishedOnce);
     },
 
     /* 

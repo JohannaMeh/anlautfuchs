@@ -245,12 +245,6 @@ Game.AnimationManager = (function(){
         }
         var endDegrees = startDegrees;
 
-
-        
-        console.log('margin-left', marginLeft);
-        console.log('bottom', bottom);
-        console.log('berry moves', berryMoves);
-
         if(berryMoves < 7){
             marginLeft = marginLeft - 40;
             bottom = bottom - 11.5;
@@ -293,9 +287,6 @@ Game.AnimationManager = (function(){
 
             berryMoves++;
         }
-
-        console.log('startDegrees', startDegrees);
-        console.log('endDegrees', endDegrees);
 
         $({deg: startDegrees}).animate({deg: endDegrees}, {
             duration: berryAnimationTime,

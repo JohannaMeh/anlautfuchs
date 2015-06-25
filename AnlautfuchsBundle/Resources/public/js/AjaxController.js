@@ -34,8 +34,6 @@ Game.AjaxController = (function(){
                     $(that).trigger("levelLoaded", [levelModel]);
                 },
                 error: function(data){
-                    console.log('error');
-                    console.log(data);
                     if(data.status == 200){
                         //data.responseText
                     }
@@ -59,8 +57,6 @@ Game.AjaxController = (function(){
                     $(that).trigger('disabledLevelsLoaded', [data]);
                 },
                 error: function(data){
-                    console.log('error');
-                    console.log(data);
                     if(data.status == 200){
                         //data.responseText
                     }
@@ -86,8 +82,6 @@ Game.AjaxController = (function(){
                     $(that).trigger("userLoaded", [userModel]);
                 },
                 error: function(data){
-                    console.log('error');
-                    console.log(data);
                     if(data.status == 200){
                         //data.responseText
                     }
@@ -113,8 +107,6 @@ Game.AjaxController = (function(){
                     $(that).trigger("companionsLoaded", [companionModel]);
                 },
                 error: function(data){
-                    console.log('error');
-                    console.log(data);
                     if(data.status == 200){
                         //data.responseText
                     }
@@ -136,12 +128,9 @@ Game.AjaxController = (function(){
             data: {
             },
             success: function(data){
-                console.log('user level sucessfully saved');
                 $(that).trigger('disabledLevelsLoaded', [data]);
             },
             error: function(data){
-                console.log('error');
-                console.log(data);
                 if(data.status == 200){
                     //data.responseText
                 }
@@ -160,11 +149,8 @@ Game.AjaxController = (function(){
             data: {
             },
             success: function(data){
-                console.log('user companion sucessfully saved');
             },
             error: function(data){
-                console.log('error');
-                console.log(data);
                 if(data.status == 200){
                     //data.responseText
                 }
@@ -183,11 +169,8 @@ Game.AjaxController = (function(){
             data: {
             },
             success: function(data){
-                console.log('user berries eaten sucessfully saved');
             },
             error: function(data){
-                console.log('error');
-                console.log(data);
                 if(data.status == 200){
                     //data.responseText
                 }

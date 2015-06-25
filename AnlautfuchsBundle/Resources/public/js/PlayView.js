@@ -51,9 +51,6 @@ Game.PlayView = (function(){
         }else{
             useVisibility = true;
         }
-
-        console.log("useVisibility: ", useVisibility);
-        console.log("window height: ", $(window).height());
     },
 
     /* 
@@ -125,8 +122,6 @@ Game.PlayView = (function(){
         Mark given character as correct.
     */
     markCharacterAsCorrect = function(character){
-        console.log('correct', character);
-        console.log('correct jquery', $('div[character="'+character+'"]'));
         $('div[character="'+character+'"]').addClass('correct');
         setTimeout(removeCharacterMarks, 1500);
     },
@@ -135,8 +130,6 @@ Game.PlayView = (function(){
        Mark given character as incorrect
     */
     markCharacterAsIncorrect = function(character){
-        console.log('incorrect', character);
-        console.log('incorrect jquery', $('div[character="'+character+'"]'));
         $('div[character="'+character+'"]').addClass('incorrect');
     },
 
@@ -154,7 +147,6 @@ Game.PlayView = (function(){
     setWordImage = function(image, imageOptional){
 
         currentImage = image;
-        console.log('set current wordimage', image);
 
         if(!imageOptional){
             //set image
@@ -341,7 +333,6 @@ Game.PlayView = (function(){
         Disables the levels on the level list.
     */
     disableLevels = function(levelList) {
-        console.log('disable Levels', levelList);
         $('.mini-level-selection li').removeClass('disabled');
         for(var key in levelList){
             var levelId = levelList[key];
@@ -353,7 +344,6 @@ Game.PlayView = (function(){
         Marks the current level.
     */
     markCurrentLevel = function(levelId, parentId){
-        console.log('parentId', levelId, parentId);
         $(".mini-level-selection li.selected").removeClass('selected');
         $('li[level-id="'+levelId+'"]').addClass('selected');
 
@@ -376,7 +366,6 @@ Game.PlayView = (function(){
         Show popup that an companion type was unlocked.
     */
     showFoxUnlockedPopup = function(foxType){
-        console.log("Yaaaay unlocked: ", foxType);
 
         //remove all classes
         $("#unlocked-type").removeClass();
@@ -403,8 +392,6 @@ Game.PlayView = (function(){
         if(hideAfterTimeout == undefined){
             hideAfterTimeout = true;
         }
-
-        console.log("Yaaaay level finished :)");
 
         $("#level-finished-popup").fadeIn();
 

@@ -168,7 +168,6 @@ Game.GameController = (function(){
         levelModel.checkIfAlreadyFinished(disabledLevelsJson);
 
         if(levelModel.wasAlreadyFinishedOnce() && !userModel.getGameWon()){
-            console.log("last level....");
             levelModel.setAlreadyFinishedOnce(false);
         }
 
@@ -191,7 +190,6 @@ Game.GameController = (function(){
         var nextLevelId = levelModel.getNextLevelId();
         if(companionModel){
             levelModel.setFoxTypeUnlockable(companionModel.checkIfLevelUnlocksFoxType(nextLevelId));
-            console.log("Unlockable foxtype: ",levelModel.getFoxTypeUnlockable());
         }
     },
 
@@ -299,7 +297,6 @@ Game.GameController = (function(){
         If the level is finished or the berry gets moved.        
     */
     onCharClicked = function(event, character){
-        console.log("character selected", character);
         var success = levelModel.checkCharacter(character);
 
         if(success){
@@ -401,7 +398,6 @@ Game.GameController = (function(){
         Gets called when the "soundStarted" event from the sound manager gets triggered.
     */
     onSoundStart = function(event){
-        console.log('sound start');
         animationManager.playTapeRecorder();
     },
 
@@ -409,7 +405,6 @@ Game.GameController = (function(){
         Gets called when the "soundEnded" event from the sound manager gets triggered.
     */
     onSoundEnded = function(event){
-        console.log('sound ended => end animation');
         animationManager.stopTapeRecorder();
 
 

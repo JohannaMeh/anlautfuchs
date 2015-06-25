@@ -71,7 +71,6 @@ Game.SoundManager = (function(){
         Sets the sound for the current word.
     */
     setWordSound = function(soundpath){
-        console.log('word sound', soundpath);
         wordSoundUrl = basisUrl + soundpath;
     },
 
@@ -100,7 +99,6 @@ Game.SoundManager = (function(){
         Sets the explanation sound of the current level.
     */
     setLevelSound = function(soundpath){
-        console.log('level sound', soundpath);
         levelSoundUrl = basisUrl + soundpath;
     },
 
@@ -243,7 +241,6 @@ Game.SoundManager = (function(){
         Gets called when a sound finished playing.
     */
     stopListener = function(event){
-        console.log("#########Sound Ende");
         $(that).trigger('soundEnded');
         currentHowl.stop();
         soundPlaying = false;

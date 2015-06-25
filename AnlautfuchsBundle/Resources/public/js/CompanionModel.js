@@ -26,7 +26,6 @@ Game.CompanionModel = (function(){
         Returns the next available companion type.
     */
     getNext = function(type){
-        console.log("next " + types);
         var position = types.indexOf(type);
         if(position != -1){
             var nextPos = 0;
@@ -35,9 +34,7 @@ Game.CompanionModel = (function(){
                 nextPos = position + 1;
             }
 
-            console.log("check next: " + nextPos);
             while(!typeVisible[nextPos]){
-                console.log("check next: " + nextPos);
                 if(nextPos < (types.length -1)){
                     nextPos++;
                 }else{
@@ -55,7 +52,6 @@ Game.CompanionModel = (function(){
         Returns the previous available companion type.
     */
     getPrev = function(type){
-        console.log("previous " + types);
         var position = types.indexOf(type);
         if(position != -1){
             var nextPos = types.length - 1;
@@ -63,9 +59,7 @@ Game.CompanionModel = (function(){
             if(position > 0){
                 nextPos = position - 1;
             }
-            console.log("check prev: " + nextPos);
             while(!typeVisible[nextPos]){
-                console.log("check prev: " + nextPos);
                 if(nextPos > 0){
                     nextPos--;
                 }else{
@@ -84,7 +78,6 @@ Game.CompanionModel = (function(){
     */
     createFromJson = function(json){
         for(var i = 0; i < json.length; i++){
-            console.log(json[i]);
             types[i] = json[i].type;
             neededLevelIds[i] = json[i].needed_level_id.id;
             typeVisible[i] = true;
