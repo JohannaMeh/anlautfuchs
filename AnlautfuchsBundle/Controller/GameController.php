@@ -7,6 +7,9 @@ use AnlautfuchsBundle\Entity;
 
 class GameController extends Controller
 {
+    /* 
+        Returns the game html.
+    */
     public function indexAction()
     {
         $session = $this->getRequest()->getSession();

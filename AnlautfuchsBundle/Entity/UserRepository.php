@@ -13,6 +13,9 @@ use Doctrine\ORM\EntityRepository;
 class UserRepository extends EntityRepository
 {
 
+    /* 
+        Checks if the username exists and if the password is correct.
+    */
     public function checkUser($username, $password){
         $user = $this->getUser($username);
 
@@ -27,10 +30,16 @@ class UserRepository extends EntityRepository
         return $user;
     }
 
+    /* 
+        Returns the user if it exists.
+    */
     public function getUser($username){
         return $this->findOneByName($username);
     }
 
+    /* 
+        Checks if the password is correct.
+    */
     public function checkPassword($username, $password){
 
         $query = $this->createQueryBuilder('u')

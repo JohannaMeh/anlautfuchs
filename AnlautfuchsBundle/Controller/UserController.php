@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class UserController extends Controller
 {
+    /* 
+        Returns informations about the active user.
+    */
     public function indexAction()
     {
         $session = $this->getRequest()->getSession();
@@ -28,6 +31,9 @@ class UserController extends Controller
         }
     }
 
+    /* 
+        Returns the disabled levels for the active user.
+    */
     public function disabledLevelsAction(){
         $session = $this->getRequest()->getSession();
 
@@ -55,12 +61,18 @@ class UserController extends Controller
         }
     }
 
+    /* 
+        Loads the data about the disabled levels.
+    */
     public function loadDisabledLevels($nextLevelId){
         // generate disabled levels list
 
         return $this->getDoctrine()->getRepository('AnlautfuchsBundle:Levels')->getFollowingLevelIds($nextLevelId);
     }   
 
+    /* 
+        Saves that the user won the level.
+    */
     public function saveLevelAction($levelId){
         $session = $this->getRequest()->getSession();
 
@@ -107,6 +119,9 @@ class UserController extends Controller
         }
     }
 
+    /* 
+        Saves the current user companion.
+    */
     public function saveCompanionAction($companionType){
         $session = $this->getRequest()->getSession();
 
@@ -134,7 +149,9 @@ class UserController extends Controller
         }
     }
 
-
+    /* 
+        Saves the amount of berries eaten for the user.
+    */
     public function saveBerriesEatenAction($berries){
         $session = $this->getRequest()->getSession();
 

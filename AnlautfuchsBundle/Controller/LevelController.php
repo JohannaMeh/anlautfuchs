@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LevelController extends Controller
 {
+    /* 
+        Returns the informations about the requested level.
+    */
     public function indexAction($levelId)
     {
 

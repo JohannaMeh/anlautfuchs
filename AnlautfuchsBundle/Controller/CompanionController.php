@@ -8,6 +8,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CompanionController extends Controller
 {
+
+    /* 
+        Returns informations about all the existing companions.
+    */
     public function indexAction()
     {
 

@@ -8,11 +8,17 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class LoginController extends Controller
 {
+    /* 
+        Returns the login html.
+    */
     public function indexAction()
     {
         return $this->render('AnlautfuchsBundle:Default:login.html.twig', array('show_username_notice'=>false, 'show_password_notice'=>false));
     }
 
+    /* 
+        Checks if the user exists and if the password is correct. If everything is correct the user gets logged in.
+    */
     public function loginAction(Request $request)
     {
         $username = $request->request->get('username');
@@ -51,6 +57,9 @@ class LoginController extends Controller
         }
     }
 
+    /* 
+        Logs the user out by invalidating the session.
+    */
     public function logoutAction(Request $request)
     {
 

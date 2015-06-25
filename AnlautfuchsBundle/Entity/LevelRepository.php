@@ -12,7 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class LevelRepository extends EntityRepository
 {
-
+    /* 
+        Returns all main levels without parents.
+    */
     public function getParentLevels($withChildren = true){
 
         $query = $this->createQueryBuilder('l')
@@ -31,7 +33,9 @@ class LevelRepository extends EntityRepository
         return $parentLevel;
     }
 
-
+    /* 
+        Returns sublevels (children) of a given level.
+    */
     public function getChildren($level){
 
         $query = $this->createQueryBuilder('l')
@@ -43,7 +47,9 @@ class LevelRepository extends EntityRepository
         
     }
 
-
+    /* 
+        Returns data about level for the game
+    */
     public function getLevelForGame($levelId){
         $query = $this->createQueryBuilder('l')
             ->where('l.id = :levelid')
@@ -54,6 +60,9 @@ class LevelRepository extends EntityRepository
         return $query->getOneOrNullResult();
     }
 
+    /* 
+        Returns all levels which are after the given level in the game.
+    */
     public function getFollowingLevelIds($levelId){
         $query = $this->createQueryBuilder('l')
             ->where('l.id = :levelid')

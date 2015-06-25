@@ -13,14 +13,23 @@ use Doctrine\ORM\EntityRepository;
 class CharacterRepository extends EntityRepository
 {
 
+    /* 
+        Returns all characters for the first row.
+    */
     public function getFirstRowCharacters(){
         return $this->getCharactersForRow(0);
     }
 
+    /* 
+        Returns all characters for the second row
+    */
     public function getSecondRowCharacters(){
         return $this->getCharactersForRow(1);
     }
 
+    /* 
+        Returns characters for the given row.
+    */
     private function getCharactersForRow($row){
         $query = $this->createQueryBuilder('char')
             ->where('char.row = :rowId')
