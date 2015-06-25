@@ -16,8 +16,11 @@ Game.AnimationManager = (function(){
     defaultMarginLeft = 510,
     defaultBottom = 360,
     defaultDegree = 0,
+    defaultScale = 0.8,
 
-    initialised = false;
+    initialised = false,
+    heightTreshold = 900,
+    useScaling = false,
 
     /* 
         Intialises the object. 
@@ -33,18 +36,41 @@ Game.AnimationManager = (function(){
         $(window).load(function(){
             stopAnimations();
         });
+
+        checkUseScale();
         return that;
+    },
+
+    /* 
+        Checks if the berry needs scaling.
+    */
+    checkUseScale = function(){
+        if($(window).height() < heightTreshold){
+            useScaling = true;
+        }else{
+            useScaling = false;
+        }
     },
 
     /* 
         Moves the Berry to the starting position.
     */
     resetBerry = function(){
+
+
         berryMoves = 0;
-        $('#berry').css('margin-left', defaultMarginLeft + 'px');
-        $('#berry').css('bottom', defaultBottom + 'px');
+        //$('#berry').css('margin-left', defaultMarginLeft + 'px');
+        //$('#berry').css('bottom', defaultBottom + 'px');
         $('#berry').css('opacity', 1);
-        $('#berry').css('transform', 'rotate(' + defaultDegree + 'deg)');
+        if(useScaling){
+            $('#berry').css('transform', 'rotate(' + defaultDegree + 'deg) scale(' + defaultScale + ')');
+        }else{
+            $('#berry').css('transform', 'rotate(' + defaultDegree + 'deg)');
+        }
+        
+
+        $('#berry').css('margin-left', '');
+        $('#berry').css('bottom', '');
     },
 
     /* 
@@ -277,9 +303,16 @@ Game.AnimationManager = (function(){
                     // in the step-callback (that is fired each step of the animation),
                     // you can use the `now` paramter which contains the current
                     // animation-position (`0` up to `angle`)
-                $('#berry').css({
-                    transform: 'rotate(' + now + 'deg)'
-                });
+
+                if(useScaling){
+                    $('#berry').css({
+                        transform: 'rotate(' + now + 'deg) scale(' + defaultScale + ')'
+                    });
+                }else{
+                    $('#berry').css({
+                        transform: 'rotate(' + now + 'deg)'
+                    });
+                }
             }
         });
 

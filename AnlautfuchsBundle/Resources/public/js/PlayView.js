@@ -14,7 +14,7 @@ Game.PlayView = (function(){
     currentImage = null,
 
     useVisibility = false,
-    heightTreshold = 720,
+    heightTreshold = 900,
 
     /* 
         Initializes the object. Sets some listeners and prepares the view.
@@ -36,6 +36,8 @@ Game.PlayView = (function(){
         $("#word-image").on('click', onWordImageClicked);
 
         checkUseVisibility();
+
+        $("#berry").addClass('default');
 
         return that;
     },
@@ -77,7 +79,12 @@ Game.PlayView = (function(){
         Resets the view to certain defaults. 
     */
     resetView = function(){
-        $('.game-controls').css('visibility', 'hidden');
+        if(useVisibility){
+            $('.game-controls').css('visibility', 'hidden');
+        }else{
+            $('.game-controls').hide();
+        }
+        
         $('#word-image').css('visibility','hidden');
         $('#sound-button').css('visibility','hidden');
         
@@ -166,7 +173,12 @@ Game.PlayView = (function(){
         Prepares the playview for the current level.
     */
     prepareLevel = function(showSecondRow, newShowImage, newWordSound){
-        $('.game-controls').css('visibility', 'hidden');
+        if(useVisibility){
+            $('.game-controls').css('visibility', 'hidden');
+        }else{
+            $('.game-controls').hide();
+        }
+
         $('#word-image').css('visibility','hidden');
         $('#sound-button').css('visibility','hidden');
         
@@ -220,11 +232,13 @@ Game.PlayView = (function(){
         Starts the game.
     */
     onStartButtonClicked = function(event){
-        $('.game-controls').css('visibility', 'visible');
+        
 
         if(useVisibility){
+            $('.game-controls').css('visibility', 'visible');
             $('#start-button').css('visibility', 'hidden');
         }else{
+            $('.game-controls').show();
             $('#start-button').hide();
         }
 

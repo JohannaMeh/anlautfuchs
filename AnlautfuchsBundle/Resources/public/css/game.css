@@ -263,6 +263,14 @@ input.form-control.error {
     height: 400px;
 }
 
+@media (max-width: 1380px){
+    .level-selection {
+        width: 96%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
+
 .level-selection li {
     list-style: none;
     display: inline-block;
@@ -271,7 +279,7 @@ input.form-control.error {
 @media (max-width: 1380px){
     .level-selection li {
         zoom: 0.7;
-        -moz-transform: scale(0.8);
+        -moz-transform: scale(0.7);
     }
 }
 
@@ -290,6 +298,16 @@ input.form-control.error {
     font-weight: bold;*/
 }
 
+@media (max-width: 1380px){
+    .level-selection .main-level > li {
+        margin-top: 100px;
+        margin-bottom: 20px;
+        margin-left: 5px;
+        height: 56px;
+        width: 100px;
+    }
+}
+
 .level-selection .sub-level{
     display: none;
     float:right;
@@ -300,8 +318,8 @@ input.form-control.error {
 
 @media (max-width: 1380px){
     .level-selection .sub-level {
-        margin-right: 18%;
-        margin-top: -120px;
+        margin-right: 12%;
+        margin-top: -180px;
     }
 }
 
@@ -552,10 +570,24 @@ div.level-selection > ul li.selected {
     margin-left: 150px;
 }
 
+@media (max-width: 1380px){
+    .companion-selection-container .companion {
+        bottom: 160px;
+        margin-left: 60px;
+    }
+}
+
 .companion-selection-container #select-companion {
     position:fixed;
     bottom: 140px;
     margin-left: 250px;
+}
+
+@media (max-width: 1380px){
+    .companion-selection-container #select-companion {
+        margin-left: 160px;
+        bottom: 100px;
+    }
 }
 
 #tree-stump {
@@ -571,6 +603,8 @@ div.level-selection > ul li.selected {
     #tree-stump {
         zoom: 0.8;
         -moz-transform: scale(0.8);
+        margin-left: -30px;
+        bottom: -40px;
     }
 }
 
@@ -644,7 +678,8 @@ div.level-selection > ul li.selected {
 
 @media (max-width: 1380px){
     .play-view-container .companion {
-        margin-left: -265px;
+        margin-left: -280px;
+        margin-bottom: -25px;
     }
 }
 
@@ -825,7 +860,7 @@ div.level-selection > ul li.selected {
 
 @media(max-width: 1380px){
     .game-controls{
-        margin-top: 40px;
+        margin-top: 5px;
     }
 }
 
@@ -863,6 +898,8 @@ div.level-selection > ul li.selected {
     #word-image {
         zoom: 0.7;
         -moz-transform: scale(0.7);
+        margin-top: -180px;
+        margin-left: 15px;
     }
 }
 
@@ -878,6 +915,14 @@ div.level-selection > ul li.selected {
     margin-left: 30px;
 }
 
+@media (max-width: 1380px){
+    #word-image.real-image {
+        zoom: 0.7;
+        -moz-transform: scale(0.7);
+        margin-top: -167px;
+    }
+}
+
 #tree {
     background: url("../data/img/UI/baum.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 800px;
@@ -891,17 +936,22 @@ div.level-selection > ul li.selected {
     #tree {
         zoom: 0.8;
         -moz-transform: scale(0.8);
+        bottom: -70px;
+        margin-left: -90px;
     }
 }
 
 #berry {
     position: fixed;
-    bottom: 360px;
-    margin-left: 510px;
     z-index:20;
     background: url("../data/img/UI/traubeKlein.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     width: 90px;
     height: 90px;
+}
+
+#berry.default {
+    bottom: 360px;
+    margin-left: 510px;
 }
 
 
@@ -909,6 +959,13 @@ div.level-selection > ul li.selected {
     #berry {
         zoom: 0.8;
         -moz-transform: scale(0.8);
+    }
+
+    #berry.default {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+        bottom: 300px;
+        margin-left: 435px;
     }
 }
 
@@ -927,6 +984,7 @@ div.level-selection > ul li.selected {
     #berries-eaten-sign {
         zoom: 0.8;
         -moz-transform: scale(0.8);
+        margin-left: 265px;
     }
 }
 
@@ -1283,6 +1341,14 @@ div.mini-level-selection > ul li.selected {
     background: url(../data/img/UI/popupBackground.png) scroll 0 0 / 100% auto;
 }
 
+@media (max-width: 1380px){
+    .popup {
+        top: 15%;
+        left: 25%;
+    }
+}
+
+
 #unlocked-type{
     width: 350px;
     height: 350px;
@@ -1340,6 +1406,17 @@ div.mini-level-selection > ul li.selected {
     top: 15%;
     left: 27.5%;
 }
+
+
+@media (max-width: 1380px){
+    #credits {
+        width: 850px;
+        height: 625px;
+        top: 5%;
+        left: 20%;
+    }
+}
+
 
 #credits .inner {
     text-align: center;
