@@ -55,6 +55,22 @@ Game.PlayView = (function(){
         $('.play-view-container').show();
         resizeCharacterBoxes();
         $('#header-text').text('Übung');
+        resetView();
+    },
+
+    resetView = function(){
+        $('.game-controls').css('visibility', 'hidden');
+        $('#word-image').css('visibility','hidden');
+        $('#sound-button').css('visibility','hidden');
+        
+
+        if(useVisibility){
+            $('#start-button').css('visibility', 'visible');
+        }else{
+            $('#start-button').show();
+        }
+
+        gameStarted = false;
     },
 
     resizeCharacterBoxes = function(){

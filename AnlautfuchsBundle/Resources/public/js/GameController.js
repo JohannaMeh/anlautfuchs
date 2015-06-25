@@ -484,6 +484,8 @@ Game.GameController = (function(){
             case 'play':
                 animationManager.setCurrentContainer('.play-view-container');
 
+                animationManager.resetBerry();
+
                 levelSelectionView.hideView();
                 companionSelectionView.hideView();
 
