@@ -167,6 +167,11 @@ Game.GameController = (function(){
         //check if level was already finished or if it is the first try for the level
         levelModel.checkIfAlreadyFinished(disabledLevelsJson);
 
+        if(levelModel.wasAlreadyFinishedOnce() && !userModel.getGameWon()){
+            console.log("last level....");
+            levelModel.setAlreadyFinishedOnce(false);
+        }
+
         //check if by finishing the level a fox type could be unlocked
         checkForLevelFoxType();
 
@@ -186,6 +191,7 @@ Game.GameController = (function(){
         var nextLevelId = levelModel.getNextLevelId();
         if(companionModel){
             levelModel.setFoxTypeUnlockable(companionModel.checkIfLevelUnlocksFoxType(nextLevelId));
+            console.log("Unlockable foxtype: ",levelModel.getFoxTypeUnlockable());
         }
     },
 
@@ -231,6 +237,9 @@ Game.GameController = (function(){
         userModel = user;
 
         animationManager.setCompanionType(userModel.getCompanion());
+        if(companionModel){
+            companionModel.setGameWon(userModel.getGameWon());
+        }
     },
 
     /* 
@@ -277,6 +286,9 @@ Game.GameController = (function(){
         if(disabledLevelsJson != null){
             companionModel.setDisabledLevels(disabledLevelsJson);
         }
+        if(userModel){
+            companionModel.setGameWon(userModel.getGameWon());
+        }
     },
 
     /* 
@@ -306,7 +318,7 @@ Game.GameController = (function(){
                 var finished = levelModel.isLevelFinished();
                 if(finished){
                     // check if level is finished for the first time and unlocks an fox Type
-                    if(!levelModel.wasAlreadyFinishedOnce() && levelModel.getFoxTypeUnlockable() != null){
+                    if(!userModel.getGameWon() && (!levelModel.wasAlreadyFinishedOnce() && levelModel.getFoxTypeUnlockable() != null)){
                         //play sound with type unlocking stuff
                         soundManager.toggleSpecialFinishLevelSound();
                         //show unlocked skin

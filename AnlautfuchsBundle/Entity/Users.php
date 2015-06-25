@@ -164,4 +164,32 @@ class Users
     {
         return $this->userCompanion;
     }
+    /**
+     * @var boolean
+     */
+    private $gameWon;
+
+
+    /**
+     * Set gameWon
+     *
+     * @param boolean $gameWon
+     * @return Users
+     */
+    public function setGameWon($gameWon)
+    {
+        $this->gameWon = $gameWon;
+
+        return $this;
+    }
+
+    /**
+     * Get gameWon
+     *
+     * @return boolean 
+     */
+    public function getGameWon()
+    {
+        return $this->gameWon;
+    }
 }

@@ -66,7 +66,6 @@ class UserController extends Controller
     */
     public function loadDisabledLevels($nextLevelId){
         // generate disabled levels list
-
         return $this->getDoctrine()->getRepository('AnlautfuchsBundle:Levels')->getFollowingLevelIds($nextLevelId);
     }   
 
@@ -95,6 +94,21 @@ class UserController extends Controller
                     $user->setCurrentLevel($level);
 
                     $em->flush();
+                }else{
+                    //game won
+                    $user->setGameWon(true);
+
+                    $em->flush();
+
+                    $levels = array();
+
+                    $serializer = $this->container->get('serializer');
+                    $json = $serializer->serialize($levels, 'json');
+
+                    $response = new JsonResponse();
+                    $response->setContent($json);
+
+                    return $response;
                 }
             }else{
                 $nextLevelId = $user->getCurrentLevel()->getId();

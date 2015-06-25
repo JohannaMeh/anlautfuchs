@@ -60,7 +60,7 @@ class Levels
     private $imageOptional;
 
     /**
-     * @var integer
+     * @var \AnlautfuchsBundle\Entity\Levels
      */
     private $parentLevel;
 
@@ -298,10 +298,10 @@ class Levels
     /**
      * Set parentLevel
      *
-     * @param integer $parentLevel
+     * @param \AnlautfuchsBundle\Entity\Levels $parentLevel
      * @return Levels
      */
-    public function setParentLevel($parentLevel)
+    public function setParentLevel(\AnlautfuchsBundle\Entity\Levels $parentLevel = null)
     {
         $this->parentLevel = $parentLevel;
 
@@ -311,7 +311,7 @@ class Levels
     /**
      * Get parentLevel
      *
-     * @return integer 
+     * @return \AnlautfuchsBundle\Entity\Levels 
      */
     public function getParentLevel()
     {

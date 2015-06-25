@@ -19,7 +19,7 @@ Game.AnimationManager = (function(){
     defaultScale = 0.8,
 
     initialised = false,
-    heightTreshold = 900,
+    heightTreshold = 800,
     useScaling = false,
 
     /* 

@@ -8,6 +8,7 @@ Game.UserModel = (function(){
     companion = null,
     name = null,
     berriesEaten = null,
+    gameWon = false,
 
     /* 
         Initializes the user. Does nothing...
@@ -67,6 +68,13 @@ Game.UserModel = (function(){
     },
 
     /* 
+        Tells if the user already won the game
+    */
+    getGameWon = function(){
+        return gameWon;
+    },
+
+    /* 
         Creates the user from an json string.
     */
     createFromJson = function(json){
@@ -78,6 +86,7 @@ Game.UserModel = (function(){
         companion = json.user_companion.type;
 
         berriesEaten = json.berries_eaten;
+        gameWon = json.game_won;
 
         return that;
     };
@@ -90,6 +99,7 @@ Game.UserModel = (function(){
     that.setBerriesEaten = setBerriesEaten;
     that.getBerriesEaten = getBerriesEaten;
     that.getName = getName;
+    that.getGameWon = getGameWon;
     that.createFromJson = createFromJson;  
 
     return that;

@@ -22,6 +22,10 @@ AnlautfuchsBundle\Entity\Companion:
             nullable: false
             unsigned: false
             comment: ''
+        unlockedOnGameWon:
+            type: boolean
+            nullable: false
+            comment: ''
     manyToOne:
         neededLevelId:
             targetEntity: Levels

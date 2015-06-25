@@ -146,4 +146,32 @@ class Companion
     {
         return $this->neededLevelId;
     }
+    /**
+     * @var boolean
+     */
+    private $unlockedOnGameWon;
+
+
+    /**
+     * Set unlockedOnGameWon
+     *
+     * @param boolean $unlockedOnGameWon
+     * @return Companion
+     */
+    public function setUnlockedOnGameWon($unlockedOnGameWon)
+    {
+        $this->unlockedOnGameWon = $unlockedOnGameWon;
+
+        return $this;
+    }
+
+    /**
+     * Get unlockedOnGameWon
+     *
+     * @return boolean 
+     */
+    public function getUnlockedOnGameWon()
+    {
+        return $this->unlockedOnGameWon;
+    }
 }

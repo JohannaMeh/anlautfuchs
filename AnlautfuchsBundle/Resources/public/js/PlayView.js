@@ -14,7 +14,7 @@ Game.PlayView = (function(){
     currentImage = null,
 
     useVisibility = false,
-    heightTreshold = 900,
+    heightTreshold = 800,
 
     /* 
         Initializes the object. Sets some listeners and prepares the view.

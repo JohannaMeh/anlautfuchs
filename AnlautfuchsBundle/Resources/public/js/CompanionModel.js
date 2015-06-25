@@ -7,6 +7,9 @@ Game.CompanionModel = (function(){
     neededLevelIds = [],
     typeVisible = [],
     disabledLevelIds = [],
+    unlockedOnGameWon = [],
+
+    gameWon = false,
 
     /* 
         Initialises the object and sets default values.
@@ -15,6 +18,7 @@ Game.CompanionModel = (function(){
         types = [];
         typeVisible = [];
         neededLevelIds = [];
+        unlockedOnGameWon = [];
         return that;
     },
 
@@ -80,9 +84,11 @@ Game.CompanionModel = (function(){
     */
     createFromJson = function(json){
         for(var i = 0; i < json.length; i++){
+            console.log(json[i]);
             types[i] = json[i].type;
             neededLevelIds[i] = json[i].needed_level_id.id;
             typeVisible[i] = true;
+            unlockedOnGameWon[i] = json[i].unlocked_on_game_won;
         }
 
         checkVisibleModels();
@@ -130,11 +136,23 @@ Game.CompanionModel = (function(){
     */
     checkIfLevelUnlocksFoxType = function(levelId){
         for(var i = 0; i < neededLevelIds.length; i++){
-            if(levelId == neededLevelIds[i]){
+            if(levelId == neededLevelIds[i] && !typeVisible[i]){
                 return types[i];
             }
         }
         return null;
+    },
+
+    /* 
+        Sets if the game was won or not.
+    */
+    setGameWon = function(isGameWon){
+        gameWon = isGameWon;
+        for(var i = 0; i < types.length; i++){
+            if(unlockedOnGameWon[i]){
+                typeVisible[i] = gameWon;
+            }
+        }
     };
 
     that.init = init;
@@ -143,6 +161,7 @@ Game.CompanionModel = (function(){
     that.createFromJson = createFromJson;
     that.setDisabledLevels = setDisabledLevels;
     that.checkIfLevelUnlocksFoxType = checkIfLevelUnlocksFoxType;
+    that.setGameWon = setGameWon;
 
     return that;
 })();

@@ -39,6 +39,10 @@ AnlautfuchsBundle\Entity\Users:
             column: berries_eaten
             options:
                 default: 0
+        gameWon:
+            type: boolean
+            nullable: false
+            comment: ''
     manyToOne:
         currentLevel:
             targetEntity: Levels

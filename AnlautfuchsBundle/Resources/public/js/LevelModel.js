@@ -259,6 +259,13 @@ Game.LevelModel = (function(){
     },
 
     /* 
+        Sets the already finished once.
+    */
+    setAlreadyFinishedOnce = function(alreadyFinished){
+        alreadyFinishedOnce = alreadyFinished;
+    },
+
+    /* 
         Tells if this level was already finished once.
     */
     wasAlreadyFinishedOnce = function(){
@@ -286,6 +293,7 @@ Game.LevelModel = (function(){
     that.setFoxTypeUnlockable = setFoxTypeUnlockable;
     that.checkIfAlreadyFinished = checkIfAlreadyFinished;
     that.wasAlreadyFinishedOnce = wasAlreadyFinishedOnce;
+    that.setAlreadyFinishedOnce = setAlreadyFinishedOnce;
     that.getWordSound = getWordSound;
     that.getImageOptional = getImageOptional;
 

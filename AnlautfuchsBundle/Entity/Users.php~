@@ -30,7 +30,7 @@ class Users
     private $berriesEaten;
 
     /**
-     * @var integer
+     * @var \AnlautfuchsBundle\Entity\Levels
      */
     private $currentLevel;
 
@@ -122,10 +122,10 @@ class Users
     /**
      * Set currentLevel
      *
-     * @param integer $currentLevel
+     * @param \AnlautfuchsBundle\Entity\Levels $currentLevel
      * @return Users
      */
-    public function setCurrentLevel($currentLevel)
+    public function setCurrentLevel(\AnlautfuchsBundle\Entity\Levels $currentLevel = null)
     {
         $this->currentLevel = $currentLevel;
 
@@ -135,7 +135,7 @@ class Users
     /**
      * Get currentLevel
      *
-     * @return integer 
+     * @return \AnlautfuchsBundle\Entity\Levels 
      */
     public function getCurrentLevel()
     {
@@ -163,5 +163,33 @@ class Users
     public function getUserCompanion()
     {
         return $this->userCompanion;
+    }
+    /**
+     * @var boolean
+     */
+    private $gameWon;
+
+
+    /**
+     * Set gameWon
+     *
+     * @param boolean $gameWon
+     * @return Users
+     */
+    public function setGameWon($gameWon)
+    {
+        $this->gameWon = $gameWon;
+
+        return $this;
+    }
+
+    /**
+     * Get gameWon
+     *
+     * @return boolean 
+     */
+    public function getGameWon()
+    {
+        return $this->gameWon;
     }
 }
